@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz: Is Your "Healthy" Energy Drink Actually Toxic?</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #2c3e50;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        
+        .quiz-container {
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        
+        .quiz-card {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        
+        h1 {
+            font-size: 36px;
+            margin-bottom: 10px;
+            color: #2c3e50;
+            text-align: center;
+        }
+        
+        .quiz-subtitle {
+            text-align: center;
+            color: #7f8c8d;
+            font-size: 18px;
+            margin-bottom: 40px;
+        }
+        
+        .progress-bar {
+            background: #ecf0f1;
+            height: 8px;
+            border-radius: 4px;
+            margin-bottom: 40px;
+            overflow: hidden;
+        }
+        
+        .progress-fill {
+            background: linear-gradient(to right, #667eea, #764ba2);
+            height: 100%;
+            width: 0%;
+            transition: width 0.5s ease;
+        }
+        
+        .question-container {
+            display: none;
+        }
+        
+        .question-container.active {
+            display: block;
+        }
+        
+        .question-number {
+            color: #667eea;
+            font-weight: 700;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+        }
+        
+        .question-text {
+            font-size: 24px;
+            margin-bottom: 30px;
+            color: #2c3e50;
+        }
+        
+        .answer-options {
+            display: grid;
+            gap: 15px;
+        }
+        
+        .answer-btn {
+            background: #f8f9fa;
+            border: 2px solid #e9ecef;
+            padding: 20px;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: left;
+            font-size: 16px;
+            color: #2c3e50;
+        }
+        
+        .answer-btn:hover {
+            background: #e9ecef;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .answer-btn.selected {
+            background: #667eea;
+            color: white;
+            border-color: #667eea;
+        }
+        
+        #results-container {
+            display: none;
+            text-align: center;
+        }
+        
+        .result-badge {
+            display: inline-block;
+            background: #dc3545;
+            color: white;
+            padding: 10px 30px;
+            border-radius: 30px;
+            font-weight: 700;
+            font-size: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .result-badge.safe {
+            background: #28a745;
+        }
+        
+        .result-badge.warning {
+            background: #ffc107;
+            color: #212529;
+        }
+        
+        .result-title {
+            font-size: 32px;
+            margin-bottom: 20px;
+            color: #2c3e50;
+        }
+        
+        .result-description {
+            font-size: 18px;
+            color: #666;
+            margin-bottom: 30px;
+            line-height: 1.8;
+        }
+        
+        .ingredient-reveals {
+            background: #fff3cd;
+            border: 2px solid #ffeaa2;
+            padding: 30px;
+            border-radius: 12px;
+            margin: 30px 0;
+            text-align: left;
+        }
+        
+        .ingredient-reveals h3 {
+            color: #856404;
+            margin-bottom: 15px;
+        }
+        
+        .ingredient-list {
+            list-style: none;
+        }
+        
+        .ingredient-list li {
+            padding: 10px 0;
+            border-bottom: 1px solid #ffeaa2;
+            color: #856404;
+        }
+        
+        .cta-section {
+            background: #28a745;
+            color: white;
+            padding: 30px;
+            border-radius: 12px;
+            margin-top: 30px;
+        }
+        
+        .cta-section h3 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .email-form input {
+            width: 100%;
+            padding: 15px;
+            font-size: 16px;
+            border: none;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+        
+        .submit-btn {
+            background: white;
+            color: #28a745;
+            padding: 15px 30px;
+            font-size: 18px;
+            font-weight: 600;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            width: 100%;
+            transition: all 0.3s ease;
+        }
+        
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        .quiz-footer {
+            text-align: center;
+            margin-top: 30px;
+            color: #7f8c8d;
+            font-size: 14px;
+        }
+        
+        @media (max-width: 768px) {
+            .quiz-card {
+                padding: 30px 20px;
+            }
+            
+            h1 {
+                font-size: 28px;
+            }
+            
+            .question-text {
+                font-size: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="quiz-container">
+        <div class="quiz-card">
+            <h1>Is Your "Healthy" Energy Drink Actually Toxic?</h1>
+            <p class="quiz-subtitle">Take this 60-second quiz to discover what's really in your cup</p>
+            
+            <div class="progress-bar">
+                <div class="progress-fill" id="progress"></div>
+            </div>
+            
+            <!-- Question 1 -->
+            <div class="question-container active" data-question="1">
+                <div class="question-number">Question 1 of 7</div>
+                <h2 class="question-text">What color is your favorite loaded tea or energy drink?</h2>
+                <div class="answer-options">
+                    <button class="answer-btn" onclick="selectAnswer(this, 'high')">Bright pink or red</button>
+                    <button class="answer-btn" onclick="selectAnswer(this, 'high')">Electric blue or purple</button>
+                    <button class="answer-btn" onclick="selectAnswer(this, 'medium')">Yellow or orange</button>
+                    <button class="answer-btn" onclick="selectAnswer(this, 'low')">Clear or light brown</button>
+                </div>
+            </div>
+            
+            <!-- Question 2 -->
+            <div class="question-container" data-question="2">
+                <div class="question-number">Question 2 of 7</div>
+                <h2 class="question-text">How do you typically feel 2-3 hours after drinking it?</h2>
+                <div class="answer-options">
+                    <button class="answer-btn" onclick="selectAnswer(this, 'high')">Exhausted, need another one</button>
+                    <button class="answer-btn" onclick="selectAnswer(this, 'high')">Anxious or jittery</button>
+                    <button class="answer-btn" onclick="selectAnswer(this, 'medium')">Slightly tired</button>
+                    <button class="answer-btn" onclick="selectAnswer(this, 'low')">Still energized</button>
+                </div>
+            </div>
+            
+            <!-- Question 3 -->
+            <div class="question-container" data-question="3">
+                <div class="question-number">Question 3 of 7</div>
+                <h2 class="question-text">How's your stomach after drinking it?</h2>
+                <div class="answer-options">
+                    <button class="answer-btn" onclick="selectAnswer(this, 'high')">Bloated like a balloon</button>
+                    <button class="answer-btn" onclick="selectAnswer(this, 'high')">Cramping or upset</button>
+                    <button class="answer-btn" onclick="selectAnswer(this, 'medium')">A little uncomfortable</button>
+                    <button class="answer-btn" onclick="selectAnswer(this, 'low')">Totally fine</button>
+                </div>
+            </div>
+            
+            <!-- Question 4 -->
+            <div class="question-container" data-question="4">
+                <div class="question-number">Question 4 of 7</div>
+                <h2 class="question-text">How sweet does it taste?</h2>
+                <div class="answer-options">
+                    <button class="answer-btn" onclick="selectAnswer(this, 'high')">Like liquid candy</button>
+                    <button class="answer-btn" onclick="selectAnswer(this, 'high')">Very sweet with chemical aftertaste</button>
+                    <button class="answer-btn" onclick="selectAnswer(this, 'medium')">Pretty sweet</button>
+                    <button class="answer-btn" onclick="selectAnswer(this, 'low')">Mildly sweet or natural tasting</button>
+                </div>
+            </div>
+            
+            <!-- Question 5 -->
+            <div class="question-container" data-question="5">
+                <div class="question-number">Question 5 of 7</div>
+                <h2 class="question-text">How much are you spending monthly?</h2>
+                <div class="answer-options">
+                    <button class="answer-btn" onclick="selectAnswer(this, 'high')">$120+ (yikes, I know)</button>
+                    <button class="answer-btn" onclick="selectAnswer(this, 'medium')">$60-120</button>
+                    <button class="answer-btn" onclick="selectAnswer(this, 'medium')">$30-60</button>
+                    <button class="answer-btn" onclick="selectAnswer(this, 'low')">Less than $30</button>
+                </div>
+            </div>
+            
+            <!-- Question 6 -->
+            <div class="question-container" data-question="6">
+                <div class="question-number">Question 6 of 7</div>
+                <h2 class="question-text">Can you pronounce all the ingredients?</h2>
+                <div class="answer-options">
+                    <button class="answer-btn" onclick="selectAnswer(this, 'high')">LOL no, it's like chemistry class</button>
+                    <button class="answer-btn" onclick="selectAnswer(this, 'high')">Maybe 2 or 3 of them</button>
+                    <button class="answer-btn" onclick="selectAnswer(this, 'medium')">About half</button>
+                    <button class="answer-btn" onclick="selectAnswer(this, 'low')">Yes, they're mostly natural</button>
+                </div>
+            </div>
+            
+            <!-- Question 7 -->
+            <div class="question-container" data-question="7">
+                <div class="question-number">Question 7 of 7</div>
+                <h2 class="question-text">Be honest: How do you feel about your drink habit?</h2>
+                <div class="answer-options">
+                    <button class="answer-btn" onclick="selectAnswer(this, 'high')">Guilty but addicted</button>
+                    <button class="answer-btn" onclick="selectAnswer(this, 'high')">Worried about health effects</button>
+                    <button class="answer-btn" onclick="selectAnswer(this, 'medium')">A little concerned</button>
+                    <button class="answer-btn" onclick="selectAnswer(this, 'low')">Totally comfortable</button>
+                </div>
+            </div>
+            
+            <!-- Results -->
+            <div id="results-container">
+                <div class="result-badge">HIGH RISK</div>
+                <h2 class="result-title">Your Energy Drink is a Chemical Cocktail</h2>
+                <p class="result-description">Based on your answers, you're likely consuming 5-7 artificial ingredients that are banned in other countries. The good news? You're not alone, and there's a better way.</p>
+                
+                <div class="ingredient-reveals">
+                    <h3>Ingredients Likely in Your Drink:</h3>
+                    <ul class="ingredient-list">
+                        <li>🚫 Red 40 - Banned in EU, linked to hyperactivity</li>
+                        <li>🚫 Sucralose - Destroys gut bacteria</li>
+                        <li>🚫 Synthetic caffeine - Harsh crashes</li>
+                        <li>🚫 Acesulfame K - Metabolic disruptor</li>
+                        <li>🚫 "Natural flavors" - Often hiding MSG derivatives</li>
+                    </ul>
+                </div>
+                
+                <div class="cta-section">
+                    <h3>Ready to Break Free? Get Your 5-Day Escape Plan</h3>
+                    <p style="margin-bottom: 20px;">Join 2,847+ teachers who've ditched the chemicals without losing their energy</p>
+                    <form class="email-form" onsubmit="handleSubmit(event)">
+                        <input type="email" placeholder="Enter your email" required>
+                        <button type="submit" class="submit-btn">Get My Free Escape Plan</button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="quiz-footer">
+                <p>This quiz is for educational purposes. Always consult ingredient labels.</p>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        let currentQuestion = 1;
+        let totalQuestions = 7;
+        let score = 0;
+        let answers = {};
+        
+        function selectAnswer(btn, value) {
+            // Remove previous selection
+            const buttons = btn.parentElement.querySelectorAll('.answer-btn');
+            buttons.forEach(b => b.classList.remove('selected'));
+            
+            // Add selection
+            btn.classList.add('selected');
+            
+            // Store answer
+            answers[currentQuestion] = value;
+            
+            // Auto-advance after short delay
+            setTimeout(() => {
+                nextQuestion();
+            }, 500);
+        }
+        
+        function nextQuestion() {
+            if (currentQuestion < totalQuestions) {
+                // Hide current question
+                document.querySelector(`[data-question="${currentQuestion}"]`).classList.remove('active');
+                
+                // Show next question
+                currentQuestion++;
+                document.querySelector(`[data-question="${currentQuestion}"]`).classList.add('active');
+                
+                // Update progress
+                updateProgress();
+            } else {
+                // Show results
+                showResults();
+            }
+        }
+        
+        function updateProgress() {
+            const progress = (currentQuestion / totalQuestions) * 100;
+            document.getElementById('progress').style.width = progress + '%';
+        }
+        
+        function showResults() {
+            // Hide last question
+            document.querySelector(`[data-question="${currentQuestion}"]`).classList.remove('active');
+            
+            // Calculate score
+            Object.values(answers).forEach(answer => {
+                if (answer === 'high') score += 3;
+                else if (answer === 'medium') score += 2;
+                else if (answer === 'low') score += 1;
+            });
+            
+            // Show results
+            document.getElementById('results-container').style.display = 'block';
+            
+            // Customize results based on score
+            const resultBadge = document.querySelector('.result-badge');
+            const resultTitle = document.querySelector('.result-title');
+            const resultDescription = document.querySelector('.result-description');
+            
+            if (score >= 15) {
+                resultBadge.textContent = 'HIGH RISK';
+                resultBadge.className = 'result-badge';
+                resultTitle.textContent = 'Your Energy Drink is a Chemical Cocktail';
+                resultDescription.textContent = "Based on your answers, you're likely consuming 5-7 artificial ingredients that are banned in other countries. The good news? You're not alone, and there's a better way.";
+            } else if (score >= 10) {
+                resultBadge.textContent = 'MODERATE RISK';
+                resultBadge.className = 'result-badge warning';
+                resultTitle.textContent = 'Your Drink Has Some Red Flags';
+                resultDescription.textContent = "You're consuming several questionable ingredients that could be affecting your health. Small changes can make a big difference.";
+            } else {
+                resultBadge.textContent = 'LOW RISK';
+                resultBadge.className = 'result-badge safe';
+                resultTitle.textContent = 'Not Bad, But Room for Improvement';
+                resultDescription.textContent = "Your current choice is better than most, but you could still benefit from cleaner, more effective energy sources.";
+            }
+        }
+        
+        function handleSubmit(event) {
+            event.preventDefault();
+            alert('Success! Check your email for your personalized escape plan.');
+            event.target.reset();
+        }
+        
+        // Initialize progress
+        updateProgress();
+    </script>
+</body>
+</html>
