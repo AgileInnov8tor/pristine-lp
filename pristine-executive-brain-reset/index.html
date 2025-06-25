@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Executive Brain Reset Protocol - Pristine</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #1a202c;
+            background: #f7fafc;
+        }
+        
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Hero Section */
+        .hero-section {
+            background: linear-gradient(135deg, #2D3748 0%, #1A202C 100%);
+            color: white;
+            padding: 60px 0;
+            min-height: 80vh;
+        }
+        
+        .nav-minimal {
+            text-align: center;
+            padding: 20px 0;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+        
+        .hero-content {
+            text-align: center;
+            max-width: 900px;
+            margin: 60px auto 0;
+        }
+        
+        .headline {
+            font-size: 52px;
+            line-height: 1.2;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+        
+        .subheadline {
+            font-size: 22px;
+            opacity: 0.9;
+            margin-bottom: 40px;
+        }
+        
+        .credibility {
+            font-size: 16px;
+            opacity: 0.8;
+            margin-bottom: 60px;
+        }
+        
+        /* Primary Testimonial */
+        .primary-testimonial {
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 12px;
+            padding: 40px;
+            margin: 40px auto;
+            max-width: 800px;
+        }
+        
+        .testimonial-quote {
+            font-size: 20px;
+            line-height: 1.8;
+            font-style: italic;
+            margin-bottom: 20px;
+        }
+        
+        .testimonial-author {
+            font-size: 16px;
+            opacity: 0.9;
+        }
+        
+        /* Problem Section */
+        .problem-section {
+            padding: 80px 0;
+            background: white;
+        }
+        
+        .section-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .intro-text {
+            font-size: 20px;
+            line-height: 1.8;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+        
+        .problem-highlight {
+            background: #FED7D7;
+            border-left: 4px solid #E53E3E;
+            padding: 30px;
+            margin: 40px 0;
+            border-radius: 8px;
+        }
+        
+        .problem-highlight h3 {
+            font-size: 24px;
+            margin-bottom: 15px;
+            color: #742A2A;
+        }
+        
+        .problem-highlight p {
+            font-size: 18px;
+            line-height: 1.8;
+            color: #742A2A;
+        }
+        
+        /* Solution Section */
+        .solution-section {
+            padding: 80px 0;
+            background: #EDF2F7;
+        }
+        
+        .solution-intro {
+            text-align: center;
+            font-size: 20px;
+            line-height: 1.8;
+            margin-bottom: 60px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        /* What's Included Grid */
+        .included-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .included-item {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+        }
+        
+        .included-item h4 {
+            font-size: 20px;
+            margin-bottom: 10px;
+            color: #2D3748;
+        }
+        
+        .included-item p {
+            color: #718096;
+            line-height: 1.6;
+        }
+        
+        .day-indicator {
+            display: inline-block;
+            background: #667EEA;
+            color: white;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 14px;
+            margin-right: 8px;
+        }
+        
+        /* Form Section */
+        .form-section {
+            padding: 80px 0;
+            background: linear-gradient(135deg, #667EEA 0%, #764BA2 100%);
+            color: white;
+        }
+        
+        .form-container {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .form-headline {
+            font-size: 36px;
+            margin-bottom: 40px;
+        }
+        
+        .form-box {
+            background: white;
+            color: #1a202c;
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+        }
+        
+        .email-input {
+            width: 100%;
+            padding: 18px;
+            font-size: 18px;
+            border: 2px solid #E2E8F0;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        
+        .cta-button {
+            background: #667EEA;
+            color: white;
+            border: none;
+            padding: 18px 40px;
+            font-size: 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            width: 100%;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .cta-button:hover {
+            background: #5A67D8;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(102,126,234,0.4);
+        }
+        
+        .trust-elements {
+            margin-top: 30px;
+            padding-top: 30px;
+            border-top: 1px solid #E2E8F0;
+        }
+        
+        .trust-stat {
+            display: inline-block;
+            margin: 0 20px;
+        }
+        
+        .trust-number {
+            font-size: 24px;
+            font-weight: bold;
+            color: #667EEA;
+            display: block;
+        }
+        
+        .trust-label {
+            font-size: 14px;
+            color: #718096;
+        }
+        
+        /* Recovery Timeline */
+        .timeline-section {
+            padding: 80px 0;
+            background: white;
+        }
+        
+        .timeline-title {
+            text-align: center;
+            font-size: 36px;
+            margin-bottom: 60px;
+        }
+        
+        .timeline {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 2px;
+            height: 100%;
+            background: #E2E8F0;
+        }
+        
+        .timeline-item {
+            display: flex;
+            margin-bottom: 60px;
+            align-items: center;
+        }
+        
+        .timeline-item:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+        
+        .timeline-content {
+            flex: 1;
+            padding: 0 40px;
+        }
+        
+        .timeline-marker {
+            width: 40px;
+            height: 40px;
+            background: #667EEA;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            z-index: 1;
+        }
+        
+        .timeline-content h4 {
+            font-size: 20px;
+            margin-bottom: 10px;
+            color: #2D3748;
+        }
+        
+        .timeline-content p {
+            color: #718096;
+            line-height: 1.6;
+        }
+        
+        /* Guarantee Section */
+        .guarantee-section {
+            padding: 60px 0;
+            background: #F7FAFC;
+            text-align: center;
+        }
+        
+        .guarantee-box {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 40px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+        }
+        
+        .guarantee-icon {
+            width: 60px;
+            height: 60px;
+            background: #48BB78;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            margin: 0 auto 20px;
+        }
+        
+        .guarantee-title {
+            font-size: 28px;
+            margin-bottom: 15px;
+        }
+        
+        .guarantee-text {
+            font-size: 18px;
+            line-height: 1.6;
+            color: #718096;
+        }
+        
+        /* Final CTA */
+        .final-cta {
+            padding: 80px 0;
+            background: #2D3748;
+            color: white;
+            text-align: center;
+        }
+        
+        .final-cta h2 {
+            font-size: 42px;
+            margin-bottom: 20px;
+        }
+        
+        .final-cta p {
+            font-size: 20px;
+            margin-bottom: 40px;
+            opacity: 0.9;
+        }
+        
+        .cta-button-light {
+            background: white;
+            color: #2D3748;
+            border: none;
+            padding: 20px 60px;
+            font-size: 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .cta-button-light:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(255,255,255,0.2);
+        }
+        
+        @media (max-width: 768px) {
+            .headline {
+                font-size: 36px;
+            }
+            
+            .included-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .timeline-item,
+            .timeline-item:nth-child(even) {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .timeline::before {
+                left: 20px;
+            }
+            
+            .trust-stat {
+                display: block;
+                margin: 10px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <nav class="nav-minimal">
+            <div class="container">
+                <div class="logo">PRISTINE</div>
+            </div>
+        </nav>
+        
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="headline">
+                    Your Brain Isn't Broken.<br>
+                    It's Just Overstimulated.<br>
+                    Here's the Fix.
+                </h1>
+                
+                <p class="subheadline">
+                    Join 1,400+ executives who went from scattered to strategic in 5 days<br>
+                    (without anyone at work noticing)
+                </p>
+                
+                <p class="credibility">
+                    Based on neuroscience research from Stanford and MIT on cognitive recovery,<br>
+                    tested by professionals at Google, Microsoft, and 200+ startups.
+                </p>
+                
+                <div class="primary-testimonial">
+                    <p class="testimonial-quote">
+                        "I went from taking 4 hours to write a simple email to leading our biggest product launch in 3 years. The brain fog lifted, the confidence returned, and my boss thinks I just 'found my groove again.' This protocol saved my career without anyone knowing I was drowning."
+                    </p>
+                    <p class="testimonial-author">
+                        — David M., Senior Marketing Manager, Series B Startup
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Problem Section -->
+    <section class="problem-section">
+        <div class="container">
+            <div class="section-content">
+                <p class="intro-text">
+                    If you're spending 12 hours doing 6 hours of work, hiding browser tabs of ADHD symptoms, and terrified your boss will discover you're not the superstar they hired—you're not alone. And you're not broken.
+                </p>
+                
+                <div class="problem-highlight">
+                    <h3>THE REAL PROBLEM:</h3>
+                    <p>
+                        Your brain is stuck in a vicious cycle: overstimulation → poor performance → more stimulants → worse performance. Coffee isn't working. That Adderall from college isn't an option. And admitting you need help feels like career suicide.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Solution Section -->
+    <section class="solution-section">
+        <div class="container">
+            <p class="solution-intro">
+                The Executive Brain Reset Protocol shows you exactly how to restore your cognitive function in 5 days using neuroscience-backed techniques that work with your biology, not against it.
+            </p>
+            
+            <h2 style="text-align: center; font-size: 32px; margin-bottom: 40px;">What's Included:</h2>
+            
+            <div class="included-grid">
+                <div class="included-item">
+                    <h4><span class="day-indicator">Day 1-2</span>The Stealth Detox</h4>
+                    <p>Clear mental fog without missing work or raising suspicions</p>
+                </div>
+                
+                <div class="included-item">
+                    <h4><span class="day-indicator">Day 3</span>The Focus Formula</h4>
+                    <p>Natural alternatives that actually work without jitters or crashes</p>
+                </div>
+                
+                <div class="included-item">
+                    <h4><span class="day-indicator">Day 4</span>The Meeting Survival Kit</h4>
+                    <p>Look sharp when you feel scattered - emergency protocols included</p>
+                </div>
+                
+                <div class="included-item">
+                    <h4><span class="day-indicator">Day 5</span>The Sustainable System</h4>
+                    <p>Maintain peak performance long-term without burning out again</p>
+                </div>
+                
+                <div class="included-item">
+                    <h4>Emergency Protocols</h4>
+                    <p>What to do when panic hits before presentations or important calls</p>
+                </div>
+                
+                <div class="included-item">
+                    <h4>The "Nobody Knows" Guide</h4>
+                    <p>Keep your recovery completely private while excelling at work</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Timeline Section -->
+    <section class="timeline-section">
+        <div class="container">
+            <h2 class="timeline-title">Your 5-Day Transformation</h2>
+            
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h4>Day 1: The Fog Begins to Clear</h4>
+                        <p>Simple morning protocol reduces overwhelm by 40%</p>
+                    </div>
+                    <div class="timeline-marker">1</div>
+                    <div class="timeline-content"></div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-content"></div>
+                    <div class="timeline-marker">2</div>
+                    <div class="timeline-content">
+                        <h4>Day 2: First Signs of Focus</h4>
+                        <p>Complete a full task without checking phone or email</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h4>Day 3: The Breakthrough</h4>
+                        <p>Natural energy kicks in, meetings become manageable</p>
+                    </div>
+                    <div class="timeline-marker">3</div>
+                    <div class="timeline-content"></div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-content"></div>
+                    <div class="timeline-marker">4</div>
+                    <div class="timeline-content">
+                        <h4>Day 4: Confidence Returns</h4>
+                        <p>Ideas flow naturally, imposter syndrome fades</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h4>Day 5: Strategic Thinking Restored</h4>
+                        <p>Work in 6-hour sprints instead of 12-hour struggles</p>
+                    </div>
+                    <div class="timeline-marker">5</div>
+                    <div class="timeline-content"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Form Section -->
+    <section class="form-section">
+        <div class="container">
+            <div class="form-container">
+                <h2 class="form-headline">Get Your Free 5-Day Brain Reset Protocol</h2>
+                
+                <div class="form-box">
+                    <form>
+                        <input type="email" 
+                               placeholder="Enter your email address" 
+                               class="email-input"
+                               required>
+                        
+                        <button type="submit" class="cta-button">
+                            Send Me the Reset Protocol
+                        </button>
+                    </form>
+                    
+                    <div class="trust-elements">
+                        <div class="trust-stat">
+                            <span class="trust-number">1,400+</span>
+                            <span class="trust-label">Executives Reset</span>
+                        </div>
+                        <div class="trust-stat">
+                            <span class="trust-number">5 Days</span>
+                            <span class="trust-label">Average Recovery</span>
+                        </div>
+                        <div class="trust-stat">
+                            <span class="trust-number">87%</span>
+                            <span class="trust-label">Report Improvement</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Guarantee Section -->
+    <section class="guarantee-section">
+        <div class="container">
+            <div class="guarantee-box">
+                <div class="guarantee-icon">🛡️</div>
+                <h3 class="guarantee-title">100% Privacy Guaranteed</h3>
+                <p class="guarantee-text">
+                    This protocol is designed for complete discretion. No one at work needs to know you're recovering. Your information is never shared, and you can unsubscribe anytime.
+                </p>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Final CTA -->
+    <section class="final-cta">
+        <div class="container">
+            <h2>Your Career Is Worth Saving</h2>
+            <p>Don't let cognitive overwhelm derail everything you've worked for.</p>
+            
+            <button class="cta-button-light" onclick="scrollToForm()">
+                Get the Protocol Now
+            </button>
+        </div>
+    </section>
+    
+    <script>
+        function scrollToForm() {
+            document.querySelector('.form-section').scrollIntoView({ behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>
