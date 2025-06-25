@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loaded Tea vs Clean Energy: The Shocking Ingredient Truth</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #2c3e50;
+            background-color: #f5f7fa;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+            color: white;
+            padding: 60px 20px;
+            text-align: center;
+        }
+        
+        .warning-icon {
+            font-size: 60px;
+            margin-bottom: 20px;
+            animation: shake 2s infinite;
+        }
+        
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            75% { transform: translateX(5px); }
+        }
+        
+        h1 {
+            font-size: 42px;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+        
+        .subtitle {
+            font-size: 20px;
+            opacity: 0.9;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+        
+        .comparison-tool {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            margin-bottom: 40px;
+        }
+        
+        .tool-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .tool-title {
+            font-size: 32px;
+            margin-bottom: 15px;
+        }
+        
+        .brand-selector {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+        
+        .brand-btn {
+            background: #f8f9fa;
+            border: 2px solid #dee2e6;
+            padding: 15px 30px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 16px;
+            font-weight: 500;
+        }
+        
+        .brand-btn:hover {
+            background: #e9ecef;
+            transform: translateY(-2px);
+        }
+        
+        .brand-btn.active {
+            background: #e74c3c;
+            color: white;
+            border-color: #e74c3c;
+        }
+        
+        .ingredient-comparison {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .product-column {
+            padding: 30px;
+            border-radius: 12px;
+        }
+        
+        .loaded-tea-column {
+            background: #ffe4e4;
+            border: 2px solid #e74c3c;
+        }
+        
+        .pristine-column {
+            background: #d4edda;
+            border: 2px solid #28a745;
+        }
+        
+        .column-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .product-name {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+        
+        .product-tagline {
+            font-size: 16px;
+            color: #666;
+        }
+        
+        .ingredient-list {
+            list-style: none;
+        }
+        
+        .ingredient-item {
+            padding: 15px;
+            margin-bottom: 10px;
+            background: rgba(255,255,255,0.7);
+            border-radius: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .ingredient-name {
+            font-weight: 500;
+        }
+        
+        .ingredient-warning {
+            background: #dc3545;
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        
+        .ingredient-safe {
+            background: #28a745;
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        
+        .health-impact-section {
+            background: #f8f9fa;
+            padding: 40px;
+            border-radius: 12px;
+            margin: 40px 0;
+        }
+        
+        .impact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        .impact-card {
+            background: white;
+            padding: 25px;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        
+        .impact-icon {
+            font-size: 40px;
+            margin-bottom: 15px;
+        }
+        
+        .impact-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        
+        .impact-description {
+            font-size: 14px;
+            color: #666;
+            line-height: 1.5;
+        }
+        
+        .banned-section {
+            background: #1a1a1a;
+            color: white;
+            padding: 60px 40px;
+            border-radius: 20px;
+            text-align: center;
+            margin: 40px 0;
+        }
+        
+        .banned-title {
+            font-size: 36px;
+            margin-bottom: 30px;
+        }
+        
+        .banned-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        .banned-item {
+            background: rgba(255,255,255,0.1);
+            padding: 20px;
+            border-radius: 8px;
+        }
+        
+        .banned-ingredient {
+            font-size: 20px;
+            font-weight: 700;
+            color: #ff6b6b;
+            margin-bottom: 10px;
+        }
+        
+        .banned-reason {
+            font-size: 14px;
+            opacity: 0.8;
+        }
+        
+        .switch-calculator {
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            text-align: center;
+            margin: 40px 0;
+        }
+        
+        .calc-title {
+            font-size: 28px;
+            margin-bottom: 30px;
+        }
+        
+        .calc-result {
+            font-size: 48px;
+            font-weight: 700;
+            color: #28a745;
+            margin: 30px 0;
+        }
+        
+        .cta-section {
+            background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+            color: white;
+            padding: 60px 40px;
+            text-align: center;
+            border-radius: 20px;
+        }
+        
+        .cta-title {
+            font-size: 42px;
+            margin-bottom: 20px;
+        }
+        
+        .switch-benefits {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            max-width: 600px;
+            margin: 30px auto;
+            text-align: left;
+        }
+        
+        .benefit-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 18px;
+        }
+        
+        .email-form {
+            max-width: 500px;
+            margin: 40px auto 0;
+        }
+        
+        .email-form input {
+            width: 100%;
+            padding: 18px;
+            font-size: 16px;
+            border: none;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+        
+        .submit-btn {
+            background: white;
+            color: #28a745;
+            padding: 18px 40px;
+            font-size: 18px;
+            font-weight: 700;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            width: 100%;
+            transition: all 0.3s ease;
+        }
+        
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+        
+        @media (max-width: 768px) {
+            h1 { font-size: 32px; }
+            .ingredient-comparison { grid-template-columns: 1fr; }
+            .switch-benefits { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="warning-icon">⚠️</div>
+        <h1>The Ingredient Comparison That Will Shock You</h1>
+        <p class="subtitle">See exactly what's in your loaded tea vs. natural alternatives—side by side</p>
+    </div>
+    
+    <div class="container">
+        <div class="comparison-tool">
+            <div class="tool-header">
+                <h2 class="tool-title">Select Your Loaded Tea Brand</h2>
+                <p style="color: #666;">Choose the brand you're currently drinking to see the full comparison</p>
+            </div>
+            
+            <div class="brand-selector">
+                <button class="brand-btn active" onclick="selectBrand(this)">Herbalife</button>
+                <button class="brand-btn" onclick="selectBrand(this)">It Works!</button>
+                <button class="brand-btn" onclick="selectBrand(this)">Plexus</button>
+                <button class="brand-btn" onclick="selectBrand(this)">Generic MLM</button>
+                <button class="brand-btn" onclick="selectBrand(this)">Local Nutrition Club</button>
+            </div>
+            
+            <div class="ingredient-comparison">
+                <div class="product-column loaded-tea-column">
+                    <div class="column-header">
+                        <h3 class="product-name">Typical Loaded Tea</h3>
+                        <p class="product-tagline">What you're drinking now</p>
+                    </div>
+                    
+                    <ul class="ingredient-list">
+                        <li class="ingredient-item">
+                            <span class="ingredient-name">Red 40</span>
+                            <span class="ingredient-warning">BANNED IN EU</span>
+                        </li>
+                        <li class="ingredient-item">
+                            <span class="ingredient-name">Blue 1</span>
+                            <span class="ingredient-warning">NEUROTOXIC</span>
+                        </li>
+                        <li class="ingredient-item">
+                            <span class="ingredient-name">Sucralose</span>
+                            <span class="ingredient-warning">GUT DAMAGE</span>
+                        </li>
+                        <li class="ingredient-item">
+                            <span class="ingredient-name">Acesulfame K</span>
+                            <span class="ingredient-warning">METABOLIC HARM</span>
+                        </li>
+                        <li class="ingredient-item">
+                            <span class="ingredient-name">Synthetic Caffeine</span>
+                            <span class="ingredient-warning">HARSH CRASH</span>
+                        </li>
+                        <li class="ingredient-item">
+                            <span class="ingredient-name">"Natural Flavors"</span>
+                            <span class="ingredient-warning">HIDDEN MSG</span>
+                        </li>
+                        <li class="ingredient-item">
+                            <span class="ingredient-name">Maltodextrin</span>
+                            <span class="ingredient-warning">BLOOD SUGAR SPIKE</span>
+                        </li>
+                        <li class="ingredient-item">
+                            <span class="ingredient-name">Proprietary Blend</span>
+                            <span class="ingredient-warning">UNKNOWN DOSES</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="product-column pristine-column">
+                    <div class="column-header">
+                        <h3 class="product-name">Pristine Clean Energy</h3>
+                        <p class="product-tagline">Your natural upgrade</p>
+                    </div>
+                    
+                    <ul class="ingredient-list">
+                        <li class="ingredient-item">
+                            <span class="ingredient-name">Organic Yerba Mate</span>
+                            <span class="ingredient-safe">NATURAL ENERGY</span>
+                        </li>
+                        <li class="ingredient-item">
+                            <span class="ingredient-name">L-Theanine</span>
+                            <span class="ingredient-safe">CALM FOCUS</span>
+                        </li>
+                        <li class="ingredient-item">
+                            <span class="ingredient-name">Organic Stevia</span>
+                            <span class="ingredient-safe">ZERO CALORIES</span>
+                        </li>
+                        <li class="ingredient-item">
+                            <span class="ingredient-name">Real Fruit Powder</span>
+                            <span class="ingredient-safe">ANTIOXIDANTS</span>
+                        </li>
+                        <li class="ingredient-item">
+                            <span class="ingredient-name">Natural Caffeine</span>
+                            <span class="ingredient-safe">SUSTAINED ENERGY</span>
+                        </li>
+                        <li class="ingredient-item">
+                            <span class="ingredient-name">Ashwagandha</span>
+                            <span class="ingredient-safe">STRESS RELIEF</span>
+                        </li>
+                        <li class="ingredient-item">
+                            <span class="ingredient-name">Organic Cordyceps</span>
+                            <span class="ingredient-safe">NATURAL STAMINA</span>
+                        </li>
+                        <li class="ingredient-item">
+                            <span class="ingredient-name">Every mg disclosed</span>
+                            <span class="ingredient-safe">100% TRANSPARENT</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <div class="health-impact-section">
+            <h2 style="text-align: center; font-size: 32px; margin-bottom: 20px;">What These Ingredients Do To Your Body</h2>
+            
+            <div class="impact-grid">
+                <div class="impact-card">
+                    <div class="impact-icon">🧠</div>
+                    <h3 class="impact-title">Brain Impact</h3>
+                    <p class="impact-description">Artificial colors cross the blood-brain barrier, potentially causing hyperactivity and focus issues</p>
+                </div>
+                
+                <div class="impact-card">
+                    <div class="impact-icon">🎈</div>
+                    <h3 class="impact-title">Digestive System</h3>
+                    <p class="impact-description">Sucralose destroys 50% of beneficial gut bacteria, leading to bloating and digestive issues</p>
+                </div>
+                
+                <div class="impact-card">
+                    <div class="impact-icon">💔</div>
+                    <h3 class="impact-title">Heart Health</h3>
+                    <p class="impact-description">Synthetic caffeine causes rapid heart rate and palpitations in sensitive individuals</p>
+                </div>
+                
+                <div class="impact-card">
+                    <div class="impact-icon">⚖️</div>
+                    <h3 class="impact-title">Weight Gain</h3>
+                    <p class="impact-description">Artificial sweeteners trick your body, increasing hunger and sugar cravings</p>
+                </div>
+                
+                <div class="impact-card">
+                    <div class="impact-icon">😰</div>
+                    <h3 class="impact-title">Anxiety Levels</h3>
+                    <p class="impact-description">Chemical stimulants spike cortisol, worsening anxiety and stress response</p>
+                </div>
+                
+                <div class="impact-card">
+                    <div class="impact-icon">💤</div>
+                    <h3 class="impact-title">Sleep Quality</h3>
+                    <p class="impact-description">Artificial ingredients disrupt circadian rhythm, making quality sleep impossible</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="banned-section">
+            <h2 class="banned-title">Ingredients Banned in Other Countries</h2>
+            <p style="font-size: 18px; opacity: 0.9; margin-bottom: 30px;">These are in your loaded tea but illegal in Europe, Japan, and Australia</p>
+            
+            <div class="banned-grid">
+                <div class="banned-item">
+                    <div class="banned-ingredient">Red 40</div>
+                    <div class="banned-reason">Linked to ADHD & hyperactivity in children</div>
+                </div>
+                <div class="banned-item">
+                    <div class="banned-ingredient">Yellow 5</div>
+                    <div class="banned-reason">Causes severe allergic reactions</div>
+                </div>
+                <div class="banned-item">
+                    <div class="banned-ingredient">Blue 1</div>
+                    <div class="banned-reason">Crosses blood-brain barrier</div>
+                </div>
+                <div class="banned-item">
+                    <div class="banned-ingredient">BHA/BHT</div>
+                    <div class="banned-reason">Potential carcinogen</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="switch-calculator">
+            <h2 class="calc-title">If You Switch Today, You'll Avoid:</h2>
+            <div class="calc-result">2,555 Artificial Ingredients Per Year</div>
+            <p style="font-size: 20px; color: #666;">That's 7 banned chemicals entering your body every single day</p>
+        </div>
+        
+        <div class="cta-section">
+            <h2 class="cta-title">Ready to Make the Switch?</h2>
+            <p style="font-size: 20px; margin-bottom: 30px;">Join 2,847 teachers who chose clean energy over chemicals</p>
+            
+            <div class="switch-benefits">
+                <div class="benefit-item">
+                    <span>✓</span> No banned ingredients
+                </div>
+                <div class="benefit-item">
+                    <span>✓</span> No artificial colors
+                </div>
+                <div class="benefit-item">
+                    <span>✓</span> No synthetic sweeteners
+                </div>
+                <div class="benefit-item">
+                    <span>✓</span> No proprietary blends
+                </div>
+                <div class="benefit-item">
+                    <span>✓</span> Save $100+ monthly
+                </div>
+                <div class="benefit-item">
+                    <span>✓</span> Feel amazing daily
+                </div>
+            </div>
+            
+            <form class="email-form" onsubmit="handleSubmit(event)">
+                <input type="email" placeholder="Enter your email" required>
+                <button type="submit" class="submit-btn">Get Your Clean Energy Starter Kit</button>
+            </form>
+            
+            <p style="margin-top: 20px; font-size: 14px; opacity: 0.9;">
+                🎁 Special offer: 50% off your first order + free ingredient guide
+            </p>
+        </div>
+    </div>
+    
+    <script>
+        function selectBrand(btn) {
+            document.querySelectorAll('.brand-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+        }
+        
+        function handleSubmit(event) {
+            event.preventDefault();
+            alert('Your clean energy starter kit is on the way! Check your email for your exclusive discount code.');
+            event.target.reset();
+        }
+    </script>
+</body>
+</html>
