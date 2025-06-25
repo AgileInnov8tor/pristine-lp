@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Evening Focus Without Tomorrow's Insomnia - Pristine Zero</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Georgia', serif;
+            line-height: 1.6;
+            color: #4A5568;
+            background: #FAFBFC;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Hero Section */
+        .hero-section {
+            background: linear-gradient(135deg, #E6FFFA 0%, #F0FFF4 100%);
+            padding: 60px 0;
+            min-height: 80vh;
+            display: flex;
+            align-items: center;
+        }
+        
+        .nav-minimal {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            padding: 30px 0;
+            text-align: center;
+        }
+        
+        .logo-zero {
+            font-size: 24px;
+            font-weight: 300;
+            letter-spacing: 4px;
+            color: #2D3748;
+        }
+        
+        .hero-content {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .headline {
+            font-size: 48px;
+            line-height: 1.2;
+            margin-bottom: 30px;
+            font-weight: 300;
+            color: #2D3748;
+        }
+        
+        .lead-magnet-visual {
+            width: 400px;
+            height: 500px;
+            background: linear-gradient(135deg, #FFF 0%, #F7FAFC 100%);
+            border-radius: 12px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+            margin: 40px auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            color: #A0AEC0;
+        }
+        
+        /* Value Proposition Section */
+        .value-prop-section {
+            padding: 60px 0;
+            background: white;
+        }
+        
+        .value-proposition {
+            font-size: 20px;
+            line-height: 1.8;
+            text-align: center;
+            margin-bottom: 40px;
+            color: #4A5568;
+        }
+        
+        /* Before/After Section */
+        .transformation-section {
+            padding: 80px 0;
+            background: #F7FAFC;
+        }
+        
+        .transformation-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: start;
+        }
+        
+        .before-state, .after-state {
+            padding: 40px;
+            border-radius: 16px;
+        }
+        
+        .before-state {
+            background: #FED7D7;
+            border: 2px solid #FC8181;
+        }
+        
+        .after-state {
+            background: #C6F6D5;
+            border: 2px solid #68D391;
+        }
+        
+        .state-title {
+            font-size: 32px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .before-state .state-title {
+            color: #C53030;
+        }
+        
+        .after-state .state-title {
+            color: #276749;
+        }
+        
+        .state-description {
+            font-size: 18px;
+            line-height: 1.8;
+            color: #2D3748;
+        }
+        
+        /* Bridge Section */
+        .bridge-section {
+            padding: 40px 0;
+            text-align: center;
+            background: white;
+        }
+        
+        .bridge-text {
+            font-size: 24px;
+            color: #2D3748;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        /* What's Inside Section */
+        .contents-section {
+            padding: 80px 0;
+            background: white;
+        }
+        
+        .section-title {
+            font-size: 36px;
+            text-align: center;
+            margin-bottom: 60px;
+            font-weight: 300;
+        }
+        
+        .contents-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .content-item {
+            display: flex;
+            gap: 20px;
+            align-items: start;
+        }
+        
+        .content-icon {
+            width: 50px;
+            height: 50px;
+            background: #9F7AEA;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+            flex-shrink: 0;
+        }
+        
+        .content-details h4 {
+            font-size: 20px;
+            margin-bottom: 8px;
+            color: #2D3748;
+        }
+        
+        .content-details p {
+            color: #718096;
+            line-height: 1.6;
+        }
+        
+        /* Form Section */
+        .form-section {
+            padding: 80px 0;
+            background: linear-gradient(135deg, #E6FFFA 0%, #F0FFF4 100%);
+        }
+        
+        .form-container {
+            max-width: 500px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .form-headline {
+            font-size: 32px;
+            margin-bottom: 20px;
+            font-weight: 300;
+        }
+        
+        .benefit-summary {
+            font-size: 18px;
+            margin-bottom: 40px;
+            color: #4A5568;
+        }
+        
+        .email-input {
+            width: 100%;
+            padding: 18px 24px;
+            font-size: 18px;
+            border: 2px solid #E2E8F0;
+            border-radius: 50px;
+            margin-bottom: 20px;
+            font-family: 'Georgia', serif;
+        }
+        
+        .cta-button {
+            background: #9F7AEA;
+            color: white;
+            border: none;
+            padding: 18px 40px;
+            font-size: 20px;
+            border-radius: 50px;
+            cursor: pointer;
+            width: 100%;
+            transition: all 0.3s ease;
+            font-family: 'Georgia', serif;
+        }
+        
+        .cta-button:hover {
+            background: #805AD5;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(159,122,234,0.3);
+        }
+        
+        .risk-removal {
+            margin-top: 20px;
+            font-size: 14px;
+            color: #718096;
+        }
+        
+        /* Features Grid */
+        .features-section {
+            padding: 80px 0;
+            background: white;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+        }
+        
+        .feature-card {
+            text-align: center;
+            padding: 30px;
+            background: #F7FAFC;
+            border-radius: 12px;
+            transition: transform 0.3s ease;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #9F7AEA, #6B46C1);
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 36px;
+        }
+        
+        .feature-title {
+            font-size: 24px;
+            margin-bottom: 15px;
+            color: #2D3748;
+        }
+        
+        .feature-description {
+            color: #718096;
+            line-height: 1.6;
+        }
+        
+        /* Testimonial Section */
+        .testimonial-section {
+            padding: 80px 0;
+            background: #F7FAFC;
+        }
+        
+        .testimonial-container {
+            max-width: 700px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .testimonial-quote {
+            font-size: 24px;
+            line-height: 1.8;
+            font-style: italic;
+            margin-bottom: 30px;
+            color: #2D3748;
+        }
+        
+        .testimonial-author {
+            font-size: 18px;
+            color: #718096;
+        }
+        
+        .testimonial-photo {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: #E2E8F0;
+            margin: 0 auto 30px;
+        }
+        
+        /* Final CTA */
+        .final-cta {
+            padding: 80px 0;
+            background: #2D3748;
+            color: white;
+            text-align: center;
+        }
+        
+        .final-cta h2 {
+            font-size: 42px;
+            margin-bottom: 20px;
+            font-weight: 300;
+        }
+        
+        .final-cta p {
+            font-size: 20px;
+            margin-bottom: 40px;
+            opacity: 0.9;
+        }
+        
+        .cta-button-light {
+            background: white;
+            color: #2D3748;
+            border: none;
+            padding: 18px 60px;
+            font-size: 20px;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Georgia', serif;
+        }
+        
+        .cta-button-light:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(255,255,255,0.3);
+        }
+        
+        @media (max-width: 768px) {
+            .headline {
+                font-size: 36px;
+            }
+            
+            .transformation-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .contents-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .lead-magnet-visual {
+                width: 100%;
+                max-width: 300px;
+                height: 400px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <nav class="nav-minimal">
+            <div class="container">
+                <div class="logo-zero">PRISTINE ZERO</div>
+            </div>
+        </nav>
+        
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="headline">
+                    Finally: Evening Focus Without Tomorrow's Insomnia
+                </h1>
+                
+                <div class="lead-magnet-visual">
+                    [Playbook Cover]
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Value Proposition -->
+    <section class="value-prop-section">
+        <div class="container">
+            <p class="value-proposition">
+                If you're stimulant-sensitive but need sharp focus for evening work, this playbook reveals 7 clinically-backed methods to enhance productivity after 5PM—without touching caffeine or compromising your sleep.
+            </p>
+        </div>
+    </section>
+    
+    <!-- Before/After Transformation -->
+    <section class="transformation-section">
+        <div class="container">
+            <div class="transformation-grid">
+                <div class="before-state">
+                    <h2 class="state-title">Your Current Reality</h2>
+                    <p class="state-description">
+                        Right now, you're watching colleagues power through evening client calls with their third espresso while you struggle to form coherent sentences after 6PM. You've tried "caffeine-free" supplements that turned out to be contaminated, herbal teas that do nothing, and every productivity hack except the one thing that works for everyone else—stimulants.
+                    </p>
+                </div>
+                
+                <div class="after-state">
+                    <h2 class="state-title">Your Evening Potential</h2>
+                    <p class="state-description">
+                        Imagine confidently scheduling that 8PM workshop with Tokyo clients, knowing your mind will be crystal clear. Picture yourself designing award-winning interfaces at 9PM with the same mental sharpness others get from Adderall—naturally. Envision checking your sleep data showing perfect recovery scores while your caffeinated peers battle 3AM anxiety spirals.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Bridge Section -->
+    <section class="bridge-section">
+        <div class="container">
+            <p class="bridge-text">
+                The bridge between your current fog and laser focus isn't another stimulant in disguise—it's understanding how to activate your evening productivity pathways naturally.
+            </p>
+        </div>
+    </section>
+    
+    <!-- What's Inside -->
+    <section class="contents-section">
+        <div class="container">
+            <h2 class="section-title">What's Inside Your Evening Productivity Playbook</h2>
+            
+            <div class="contents-grid">
+                <div class="content-item">
+                    <div class="content-icon">🍄</div>
+                    <div class="content-details">
+                        <h4>The Cordyceps Protocol</h4>
+                        <p>Natural ATP enhancement for evening energy</p>
+                    </div>
+                </div>
+                
+                <div class="content-item">
+                    <div class="content-icon">💡</div>
+                    <div class="content-details">
+                        <h4>Blue Light Optimization</h4>
+                        <p>When to use (and avoid) for maximum focus</p>
+                    </div>
+                </div>
+                
+                <div class="content-item">
+                    <div class="content-icon">⏰</div>
+                    <div class="content-details">
+                        <h4>The 5PM Supplement Stack</h4>
+                        <p>Exact timing for peak 7-11PM performance</p>
+                    </div>
+                </div>
+                
+                <div class="content-item">
+                    <div class="content-icon">🏃</div>
+                    <div class="content-details">
+                        <h4>Micro-Movement Method</h4>
+                        <p>2-minute focus resets that actually work</p>
+                    </div>
+                </div>
+                
+                <div class="content-item">
+                    <div class="content-icon">🥗</div>
+                    <div class="content-details">
+                        <h4>Evening Nutrition Timing</h4>
+                        <p>What to eat at 4PM for 8PM brilliance</p>
+                    </div>
+                </div>
+                
+                <div class="content-item">
+                    <div class="content-icon">🌡️</div>
+                    <div class="content-details">
+                        <h4>Temperature Hacking</h4>
+                        <p>Use your circadian rhythm for cognitive advantage</p>
+                    </div>
+                </div>
+                
+                <div class="content-item">
+                    <div class="content-icon">🎵</div>
+                    <div class="content-details">
+                        <h4>Focus Music Frequencies</h4>
+                        <p>Specific Hz patterns for stimulant-free concentration</p>
+                    </div>
+                </div>
+                
+                <div class="content-item">
+                    <div class="content-icon">🧘</div>
+                    <div class="content-details">
+                        <h4>Evening Reset Rituals</h4>
+                        <p>Transition techniques for second-wind productivity</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Quick Benefit Summary -->
+    <section class="features-section">
+        <div class="container">
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🧬</div>
+                    <h3 class="feature-title">Science-Backed</h3>
+                    <p class="feature-description">
+                        Every method is supported by clinical research on stimulant-free cognitive enhancement
+                    </p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">🌙</div>
+                    <h3 class="feature-title">Sleep-Safe</h3>
+                    <p class="feature-description">
+                        Designed specifically to enhance focus without disrupting your sleep architecture
+                    </p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h3 class="feature-title">Fast-Acting</h3>
+                    <p class="feature-description">
+                        See results in your first evening session with simple, implementable protocols
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Form Section -->
+    <section class="form-section">
+        <div class="container">
+            <div class="form-container">
+                <h2 class="form-headline">Get Your Free Evening Productivity Playbook</h2>
+                
+                <p class="benefit-summary">
+                    Created specifically for high-performing professionals who need evening productivity without stimulants. Based on clinical research and tested by freelancers, consultants, and remote workers across time zones.
+                </p>
+                
+                <form>
+                    <input type="email" 
+                           placeholder="Enter your email address" 
+                           class="email-input"
+                           required>
+                    
+                    <button type="submit" class="cta-button">
+                        Send My Caffeine-Free Focus Guide!
+                    </button>
+                    
+                    <p class="risk-removal">
+                        No spam, no "miracle pills," just science-backed strategies for stimulant-sensitive professionals. Unsubscribe anytime.
+                    </p>
+                </form>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Testimonial -->
+    <section class="testimonial-section">
+        <div class="container">
+            <div class="testimonial-container">
+                <div class="testimonial-photo"></div>
+                <p class="testimonial-quote">
+                    "I thought my freelance career was over when I developed caffeine sensitivity. This playbook gave me back my evening productivity. Last month I landed a $30K project that required 9PM calls with Singapore. My mind was clearer than it ever was on coffee."
+                </p>
+                <p class="testimonial-author">
+                    — Lisa M., UX Designer & Technical Writer
+                </p>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Final CTA -->
+    <section class="final-cta">
+        <div class="container">
+            <h2>Your Evening Hours Are Worth $30K+</h2>
+            <p>Stop losing income to stimulant sensitivity. Reclaim your most valuable working hours.</p>
+            
+            <button class="cta-button-light" onclick="scrollToForm()">
+                Get Your Evening Focus Guide Now
+            </button>
+        </div>
+    </section>
+    
+    <script>
+        // Smooth scroll to form
+        function scrollToForm() {
+            document.querySelector('.form-section').scrollIntoView({ behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>
