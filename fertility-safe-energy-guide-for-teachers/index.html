@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Fertility-Safe Energy Guide Every Teacher Needs | Free Download</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #2D3748;
+            background: #FFFBF7;
+        }
+        
+        /* Medical/clinical design with warm touches */
+        .medical-banner {
+            background: #065F46;
+            color: white;
+            padding: 12px;
+            text-align: center;
+            font-size: 14px;
+            font-weight: 500;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .hero {
+            background: linear-gradient(135deg, #F0FDFA 0%, #FEFCE8 100%);
+            padding: 50px 30px;
+            border-radius: 20px;
+            margin: 30px 0;
+            border: 2px solid #10B981;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -100px;
+            right: -100px;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(16, 185, 129, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+        
+        h1 {
+            font-size: 2.8em;
+            color: #064E3B;
+            margin-bottom: 20px;
+            line-height: 1.2;
+            font-weight: 700;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .fertility-highlight {
+            background: #FEF3C7;
+            padding: 3px 8px;
+            border-radius: 4px;
+            color: #92400E;
+            font-weight: 800;
+        }
+        
+        .subheadline {
+            font-size: 1.3em;
+            color: #065F46;
+            margin-bottom: 30px;
+            font-weight: 400;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .medical-credibility {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .credential {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #059669;
+            font-size: 14px;
+            font-weight: 600;
+        }
+        
+        .credential-icon {
+            color: #10B981;
+        }
+        
+        .before-after-story {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin: 40px 0;
+        }
+        
+        .story-card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            position: relative;
+        }
+        
+        .before-card {
+            border-top: 4px solid #DC2626;
+        }
+        
+        .after-card {
+            border-top: 4px solid #10B981;
+        }
+        
+        .story-label {
+            font-size: 0.9em;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 15px;
+        }
+        
+        .before-card .story-label {
+            color: #DC2626;
+        }
+        
+        .after-card .story-label {
+            color: #10B981;
+        }
+        
+        .story-content {
+            color: #4A5568;
+            line-height: 1.8;
+        }
+        
+        .fertility-warning {
+            background: #FEE2E2;
+            border: 2px solid #DC2626;
+            padding: 30px;
+            border-radius: 15px;
+            margin: 40px 0;
+            position: relative;
+        }
+        
+        .warning-icon {
+            position: absolute;
+            top: -20px;
+            left: 30px;
+            background: white;
+            padding: 10px;
+            border-radius: 50%;
+            font-size: 2em;
+        }
+        
+        .warning-title {
+            color: #991B1B;
+            font-size: 1.5em;
+            margin-bottom: 15px;
+            margin-top: 10px;
+            font-weight: 700;
+        }
+        
+        .warning-list {
+            list-style: none;
+            color: #7F1D1D;
+        }
+        
+        .warning-list li {
+            padding: 8px 0;
+            padding-left: 25px;
+            position: relative;
+            line-height: 1.7;
+        }
+        
+        .warning-list li:before {
+            content: "×";
+            position: absolute;
+            left: 0;
+            font-size: 1.5em;
+            font-weight: bold;
+        }
+        
+        .solution-reveal {
+            background: #ECFDF5;
+            padding: 40px;
+            border-radius: 20px;
+            margin: 40px 0;
+            text-align: center;
+        }
+        
+        .solution-title {
+            font-size: 2em;
+            color: #065F46;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+        
+        .solution-subtitle {
+            font-size: 1.2em;
+            color: #047857;
+            margin-bottom: 30px;
+        }
+        
+        .guide-preview {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+            margin: 30px 0;
+        }
+        
+        .guide-sections {
+            display: grid;
+            gap: 20px;
+            text-align: left;
+        }
+        
+        .guide-section {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            padding: 20px;
+            background: #F0FDF4;
+            border-radius: 10px;
+            transition: all 0.3s;
+        }
+        
+        .guide-section:hover {
+            transform: translateX(5px);
+            box-shadow: 0 5px 20px rgba(16, 185, 129, 0.2);
+        }
+        
+        .section-icon {
+            font-size: 2em;
+            min-width: 50px;
+            text-align: center;
+        }
+        
+        .section-content h3 {
+            color: #065F46;
+            margin-bottom: 8px;
+            font-size: 1.1em;
+        }
+        
+        .section-content p {
+            color: #4B5563;
+            font-size: 0.95em;
+            line-height: 1.6;
+        }
+        
+        .form-container {
+            background: linear-gradient(135deg, #065F46 0%, #047857 100%);
+            padding: 50px;
+            border-radius: 25px;
+            color: white;
+            text-align: center;
+            margin: 40px 0;
+            box-shadow: 0 20px 50px rgba(6, 95, 70, 0.3);
+        }
+        
+        .form-headline {
+            font-size: 2.2em;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+        
+        .form-subtitle {
+            font-size: 1.1em;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+        
+        .email-form {
+            max-width: 450px;
+            margin: 0 auto;
+        }
+        
+        input[type="email"] {
+            width: 100%;
+            padding: 18px 25px;
+            font-size: 16px;
+            border: none;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            background: rgba(255, 255, 255, 0.95);
+            color: #1A202C;
+        }
+        
+        input[type="email"]:focus {
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.5);
+        }
+        
+        .submit-btn {
+            width: 100%;
+            padding: 18px 35px;
+            font-size: 18px;
+            font-weight: 700;
+            color: #065F46;
+            background: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(255, 255, 255, 0.3);
+        }
+        
+        .privacy-note {
+            margin-top: 20px;
+            font-size: 13px;
+            opacity: 0.8;
+        }
+        
+        .social-proof {
+            background: #F9FAFB;
+            padding: 30px;
+            border-radius: 15px;
+            margin-top: 30px;
+            text-align: center;
+        }
+        
+        .download-count {
+            font-size: 2.5em;
+            color: #10B981;
+            font-weight: 800;
+            margin-bottom: 10px;
+        }
+        
+        .download-text {
+            color: #4B5563;
+            font-weight: 500;
+        }
+        
+        .expert-endorsement {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            margin: 40px 0;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
+        
+        .expert-photo {
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(135deg, #10B981 0%, #065F46 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3em;
+            color: white;
+            flex-shrink: 0;
+        }
+        
+        .expert-content {
+            flex: 1;
+        }
+        
+        .expert-quote {
+            font-size: 1.1em;
+            color: #2D3748;
+            font-style: italic;
+            margin-bottom: 15px;
+            line-height: 1.7;
+        }
+        
+        .expert-name {
+            color: #065F46;
+            font-weight: 700;
+        }
+        
+        .expert-title {
+            color: #6B7280;
+            font-size: 0.9em;
+        }
+        
+        .final-urgency {
+            background: #FEF3C7;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            margin: 40px 0;
+            border: 2px solid #F59E0B;
+        }
+        
+        .urgency-text {
+            color: #92400E;
+            font-size: 1.2em;
+            font-weight: 600;
+            line-height: 1.7;
+        }
+        
+        .highlight-stat {
+            font-size: 1.5em;
+            color: #DC2626;
+            font-weight: 800;
+        }
+        
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2em;
+            }
+            
+            .before-after-story {
+                grid-template-columns: 1fr;
+            }
+            
+            .expert-endorsement {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .medical-credibility {
+                justify-content: center;
+            }
+        }
+        
+        /* Pulse animation for CTA */
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.02); }
+        }
+        
+        .pulse {
+            animation: pulse 2s ease-in-out infinite;
+        }
+    </style>
+</head>
+<body>
+    <div class="medical-banner">
+        ⚕️ Medically Reviewed by Fertility Nutrition Specialists | Evidence-Based Information Only
+    </div>
+    
+    <div class="container">
+        <div class="hero">
+            <h1>The Hidden <span class="fertility-highlight">Fertility Dangers</span> in Your Daily Energy Drink</h1>
+            <p class="subheadline">(And How to Safely Switch Without Sacrificing the Energy You Need for 25+ Kids)</p>
+            
+            <div class="medical-credibility">
+                <div class="credential">
+                    <span class="credential-icon">✓</span>
+                    <span>Reviewed by OB/GYN</span>
+                </div>
+                <div class="credential">
+                    <span class="credential-icon">✓</span>
+                    <span>3,847 Teachers Downloaded</span>
+                </div>
+                <div class="credential">
+                    <span class="credential-icon">✓</span>
+                    <span>Science-Based Protocol</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="before-after-story">
+            <div class="story-card before-card">
+                <div class="story-label">Sarah's Story: Before</div>
+                <div class="story-content">
+                    "After 18 months of trying, nothing. My doctor asked about my diet. When I mentioned my 3 daily loaded teas, she went pale. 'Those artificial sweeteners... we need to talk.' I left her office sobbing. Was I destroying my own fertility for a fake energy boost?"
+                </div>
+            </div>
+            
+            <div class="story-card after-card">
+                <div class="story-label">Sarah's Story: After</div>
+                <div class="story-content">
+                    "3 months after switching to clean energy, I got the positive test. My doctor said my hormone levels looked completely different. I still have energy for my classroom, but now I'm growing a little miracle too. This guide saved my fertility."
+                </div>
+            </div>
+        </div>
+        
+        <div class="fertility-warning">
+            <div class="warning-icon">⚠️</div>
+            <h2 class="warning-title">What Your Loaded Tea Seller Won't Tell You</h2>
+            <ul class="warning-list">
+                <li>Sucralose linked to 23% reduction in beneficial gut bacteria (critical for conception)</li>
+                <li>Artificial colors banned in Europe for reproductive concerns</li>
+                <li>Acesulfame K shown to cross placental barrier in studies</li>
+                <li>Energy crashes triggering cortisol spikes that disrupt ovulation</li>
+                <li>Unknown interactions between 15+ artificial ingredients</li>
+            </ul>
+        </div>
+        
+        <div class="solution-reveal">
+            <h2 class="solution-title">There's a Fertility-Safe Way to Keep Your Teacher Energy</h2>
+            <p class="solution-subtitle">Without risking your future family or suffering through withdrawal</p>
+            
+            <div class="guide-preview">
+                <div class="guide-sections">
+                    <div class="guide-section">
+                        <div class="section-icon">🔬</div>
+                        <div class="section-content">
+                            <h3>The Fertility Destroyer Decoder</h3>
+                            <p>Scientific breakdown of 23 common energy drink ingredients and their impact on conception, backed by peer-reviewed studies</p>
+                        </div>
+                    </div>
+                    
+                    <div class="guide-section">
+                        <div class="section-icon">📅</div>
+                        <div class="section-content">
+                            <h3>5-Day Hormone-Safe Detox</h3>
+                            <p>Gentle transition protocol that prevents crashes while supporting your reproductive system</p>
+                        </div>
+                    </div>
+                    
+                    <div class="guide-section">
+                        <div class="section-icon">🌱</div>
+                        <div class="section-content">
+                            <h3>Natural Energy Alternatives Guide</h3>
+                            <p>15 fertility-boosting energy solutions that actually work for teacher schedules</p>
+                        </div>
+                    </div>
+                    
+                    <div class="guide-section">
+                        <div class="section-icon">📊</div>
+                        <div class="section-content">
+                            <h3>Cycle-Synced Energy Calendar</h3>
+                            <p>Match your energy routine to your menstrual cycle for optimal hormonal balance</p>
+                        </div>
+                    </div>
+                    
+                    <div class="guide-section">
+                        <div class="section-icon">🛒</div>
+                        <div class="section-content">
+                            <h3>Fertility-Safe Shopping List</h3>
+                            <p>Exact brands and products recommended by reproductive nutritionists</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="expert-endorsement">
+            <div class="expert-photo">👩‍⚕️</div>
+            <div class="expert-content">
+                <p class="expert-quote">
+                    "I see the impact of artificial energy drinks on fertility every day in my practice. This guide provides the exact protocol I recommend to patients trying to conceive. It's thorough, science-based, and specifically designed for women who can't just 'quit caffeine and rest more.'"
+                </p>
+                <div class="expert-name">Dr. Rebecca Chen, MD</div>
+                <div class="expert-title">Reproductive Endocrinologist, 15 years experience</div>
+            </div>
+        </div>
+        
+        <div class="form-container pulse">
+            <h2 class="form-headline">Get Your Free Fertility-Safe Energy Guide</h2>
+            <p class="form-subtitle">Join thousands of teachers protecting their fertility while maintaining their energy</p>
+            
+            <form class="email-form" id="fertility-form">
+                <input type="email" placeholder="Enter your email address" required>
+                <button type="submit" class="submit-btn">Download My Guide Instantly</button>
+            </form>
+            
+            <p class="privacy-note">🔒 Your privacy is protected. We never share your information.</p>
+        </div>
+        
+        <div class="social-proof">
+            <div class="download-count">14,293</div>
+            <div class="download-text">Teachers have downloaded this guide in the last 30 days</div>
+        </div>
+        
+        <div class="final-urgency">
+            <p class="urgency-text">
+                The average woman trying to conceive spends <span class="highlight-stat">$5,000+</span> on fertility treatments.<br>
+                Many don't realize their daily energy drink could be the hidden culprit.<br>
+                <strong>Don't wait until it's too late. Your future family is worth 5 minutes of reading.</strong>
+            </p>
+        </div>
+    </div>
+    
+    <script>
+        // Form submission
+        document.getElementById('fertility-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const btn = document.querySelector('.submit-btn');
+            btn.textContent = 'Preparing your guide...';
+            btn.style.background = '#10B981';
+            btn.style.color = 'white';
+            
+            setTimeout(() => {
+                btn.textContent = 'Check your inbox! ✓';
+            }, 2000);
+        });
+        
+        // Animated download counter
+        const counter = document.querySelector('.download-count');
+        const target = 14293;
+        let current = 14000;
+        
+        const increment = setInterval(() => {
+            current += Math.floor(Math.random() * 10) + 1;
+            if (current >= target) {
+                current = target;
+                clearInterval(increment);
+            }
+            counter.textContent = current.toLocaleString();
+        }, 50);
+        
+        // Smooth reveal animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+        
+        // Apply to all major sections
+        document.querySelectorAll('.before-after-story, .fertility-warning, .solution-reveal, .expert-endorsement, .final-urgency').forEach(section => {
+            section.style.opacity = '0';
+            section.style.transform = 'translateY(20px)';
+            section.style.transition = 'all 0.8s ease-out';
+            observer.observe(section);
+        });
+    </script>
+</body>
+</html>
