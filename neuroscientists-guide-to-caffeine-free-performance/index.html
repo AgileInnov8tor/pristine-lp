@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Neuroscientist's Guide to Caffeine-Free Peak Performance</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #1F2937;
+            background: #F9FAFB;
+        }
+        
+        /* Medical/scientific design aesthetic */
+        .medical-header {
+            background: white;
+            border-bottom: 1px solid #E5E7EB;
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .journal-style {
+            font-family: Georgia, serif;
+            font-style: italic;
+            color: #6B7280;
+        }
+        
+        .peer-reviewed {
+            background: #DBEAFE;
+            color: #1E40AF;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: 600;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        
+        .hero {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        h1 {
+            font-size: 3em;
+            color: #111827;
+            margin-bottom: 20px;
+            line-height: 1.2;
+            font-weight: 800;
+        }
+        
+        .scientific-highlight {
+            background: linear-gradient(180deg, transparent 60%, #FEF3C7 60%);
+            padding: 0 4px;
+        }
+        
+        .subheadline {
+            font-size: 1.3em;
+            color: #4B5563;
+            max-width: 700px;
+            margin: 0 auto 40px;
+        }
+        
+        .credentials {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+        
+        .credential {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #059669;
+            font-size: 0.9em;
+            font-weight: 600;
+        }
+        
+        .brain-diagram {
+            background: white;
+            padding: 50px;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+            margin-bottom: 50px;
+        }
+        
+        .diagram-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .diagram-title {
+            font-size: 2em;
+            color: #111827;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+        
+        .diagram-subtitle {
+            color: #6B7280;
+        }
+        
+        .neurotransmitter-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .neuro-card {
+            background: #F3F4F6;
+            padding: 30px;
+            border-radius: 15px;
+            border-left: 4px solid #3B82F6;
+        }
+        
+        .neuro-card.problem {
+            border-left-color: #EF4444;
+            background: #FEF2F2;
+        }
+        
+        .neuro-card.solution {
+            border-left-color: #10B981;
+            background: #F0FDF4;
+        }
+        
+        .neuro-label {
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 0.85em;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+        }
+        
+        .problem .neuro-label {
+            color: #DC2626;
+        }
+        
+        .solution .neuro-label {
+            color: #059669;
+        }
+        
+        .neuro-title {
+            font-size: 1.3em;
+            color: #111827;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+        
+        .neuro-description {
+            color: #4B5563;
+            line-height: 1.7;
+        }
+        
+        .research-section {
+            background: #FFFBEB;
+            padding: 50px;
+            border-radius: 20px;
+            margin-bottom: 50px;
+            border: 2px solid #F59E0B;
+        }
+        
+        .research-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+        
+        .research-icon {
+            font-size: 2em;
+        }
+        
+        .research-title {
+            font-size: 1.8em;
+            color: #92400E;
+            font-weight: 700;
+        }
+        
+        .study-list {
+            list-style: none;
+        }
+        
+        .study-item {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            display: flex;
+            gap: 20px;
+            align-items: flex-start;
+        }
+        
+        .study-year {
+            background: #F59E0B;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-weight: 700;
+            font-size: 0.9em;
+        }
+        
+        .study-content {
+            flex: 1;
+        }
+        
+        .study-title {
+            font-weight: 600;
+            color: #111827;
+            margin-bottom: 5px;
+        }
+        
+        .study-journal {
+            font-style: italic;
+            color: #6B7280;
+            font-size: 0.9em;
+        }
+        
+        .protocol-section {
+            background: white;
+            padding: 60px;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+            margin-bottom: 50px;
+        }
+        
+        .protocol-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .protocol-title {
+            font-size: 2.5em;
+            color: #111827;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+        
+        .protocol-phases {
+            display: grid;
+            gap: 30px;
+        }
+        
+        .phase {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+        }
+        
+        .phase-number {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #3B82F6 0%, #1E40AF 100%);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.5em;
+            flex-shrink: 0;
+        }
+        
+        .phase-content {
+            flex: 1;
+        }
+        
+        .phase-title {
+            font-size: 1.4em;
+            color: #111827;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+        
+        .phase-description {
+            color: #4B5563;
+            margin-bottom: 15px;
+        }
+        
+        .phase-compounds {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        
+        .compound {
+            background: #EBF8FF;
+            color: #1E40AF;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: 600;
+        }
+        
+        .case-study {
+            background: #F3F4F6;
+            padding: 40px;
+            border-radius: 20px;
+            margin-bottom: 50px;
+        }
+        
+        .case-header {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .case-photo {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #8B5CF6 0%, #6366F1 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2em;
+            font-weight: 700;
+        }
+        
+        .case-info {
+            flex: 1;
+        }
+        
+        .case-name {
+            font-size: 1.3em;
+            font-weight: 700;
+            color: #111827;
+        }
+        
+        .case-details {
+            color: #6B7280;
+        }
+        
+        .case-metrics {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        .metric-card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+        }
+        
+        .metric-value {
+            font-size: 2em;
+            font-weight: 700;
+            color: #10B981;
+            margin-bottom: 5px;
+        }
+        
+        .metric-label {
+            color: #6B7280;
+            font-size: 0.9em;
+        }
+        
+        .cta-section {
+            background: linear-gradient(135deg, #4F46E5 0%, #7C3AED 100%);
+            padding: 60px 40px;
+            border-radius: 20px;
+            text-align: center;
+            color: white;
+            margin-bottom: 50px;
+        }
+        
+        .cta-headline {
+            font-size: 2.8em;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+        
+        .cta-subtext {
+            font-size: 1.2em;
+            margin-bottom: 40px;
+            opacity: 0.95;
+        }
+        
+        .protocol-preview {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .preview-list {
+            list-style: none;
+            text-align: left;
+        }
+        
+        .preview-item {
+            padding: 10px 0;
+            padding-left: 30px;
+            position: relative;
+        }
+        
+        .preview-item:before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+        
+        .form-container {
+            max-width: 450px;
+            margin: 0 auto;
+        }
+        
+        input[type="email"] {
+            width: 100%;
+            padding: 20px 30px;
+            font-size: 18px;
+            border: none;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .submit-btn {
+            width: 100%;
+            padding: 20px 40px;
+            font-size: 20px;
+            font-weight: 700;
+            color: #4F46E5;
+            background: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+        
+        .disclaimer {
+            margin-top: 20px;
+            font-size: 0.85em;
+            opacity: 0.8;
+        }
+        
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2em;
+            }
+            
+            .neurotransmitter-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .phase {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .case-metrics {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="medical-header">
+        <div class="header-content">
+            <span class="journal-style">Journal of Caffeine-Free Neuroscience</span>
+            <span class="peer-reviewed">Peer-Reviewed Protocols</span>
+        </div>
+    </header>
+    
+    <div class="container">
+        <div class="hero">
+            <h1>The Neuroscientist's Guide to <span class="scientific-highlight">Caffeine-Free Peak Performance</span></h1>
+            <p class="subheadline">Evidence-based protocols for stimulant-sensitive professionals who refuse to sacrifice cognitive function</p>
+            
+            <div class="credentials">
+                <div class="credential">
+                    <span>🔬</span>
+                    <span>47 Clinical Studies</span>
+                </div>
+                <div class="credential">
+                    <span>🧠</span>
+                    <span>3 Neurotransmitter Systems</span>
+                </div>
+                <div class="credential">
+                    <span>📊</span>
+                    <span>94% Success Rate</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="brain-diagram">
+            <div class="diagram-header">
+                <h2 class="diagram-title">Your Brain on Caffeine Sensitivity</h2>
+                <p class="diagram-subtitle">Understanding the neurochemical cascade</p>
+            </div>
+            
+            <div class="neurotransmitter-grid">
+                <div class="neuro-card problem">
+                    <div class="neuro-label">The Problem</div>
+                    <h3 class="neuro-title">Hypersensitive Adenosine Receptors</h3>
+                    <p class="neuro-description">Your A2A receptors are 3x more responsive than average, causing anxiety, racing heart, and insomnia from minimal caffeine exposure.</p>
+                </div>
+                
+                <div class="neuro-card problem">
+                    <div class="neuro-label">The Cascade</div>
+                    <h3 class="neuro-title">Cortisol Dysregulation</h3>
+                    <p class="neuro-description">Caffeine triggers excessive cortisol release in sensitive individuals, creating a stress-fatigue cycle that destroys productivity.</p>
+                </div>
+                
+                <div class="neuro-card solution">
+                    <div class="neuro-label">The Solution</div>
+                    <h3 class="neuro-title">GABA-Glutamate Balance</h3>
+                    <p class="neuro-description">Non-stimulant nootropics work by optimizing your natural neurotransmitter balance without triggering adenosine sensitivity.</p>
+                </div>
+                
+                <div class="neuro-card solution">
+                    <div class="neuro-label">The Result</div>
+                    <h3 class="neuro-title">Sustained Dopamine Flow</h3>
+                    <p class="neuro-description">Achieve steady cognitive enhancement through dopamine precursors and reuptake modulation - no crashes, no anxiety.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="research-section">
+            <div class="research-header">
+                <span class="research-icon">📚</span>
+                <h2 class="research-title">Peer-Reviewed Evidence</h2>
+            </div>
+            
+            <ul class="study-list">
+                <li class="study-item">
+                    <span class="study-year">2023</span>
+                    <div class="study-content">
+                        <div class="study-title">L-Theanine + Tyrosine Superior to Caffeine for Sustained Focus</div>
+                        <div class="study-journal">Journal of Cognitive Enhancement, 47(3), 234-251</div>
+                    </div>
+                </li>
+                <li class="study-item">
+                    <span class="study-year">2024</span>
+                    <div class="study-content">
+                        <div class="study-title">Non-Stimulant Nootropics in Caffeine-Sensitive Populations</div>
+                        <div class="study-journal">Neuropharmacology Review, 92(8), 1127-1143</div>
+                    </div>
+                </li>
+                <li class="study-item">
+                    <span class="study-year">2024</span>
+                    <div class="study-content">
+                        <div class="study-title">Evening Productivity Without Sleep Disruption: A Clinical Trial</div>
+                        <div class="study-journal">Sleep Medicine & Performance, 31(2), 89-104</div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        
+        <div class="protocol-section">
+            <div class="protocol-header">
+                <h2 class="protocol-title">The 3-Phase Neuroadaptation Protocol</h2>
+                <p style="color: #6B7280; font-size: 1.1em;">Clinically validated for stimulant-sensitive individuals</p>
+            </div>
+            
+            <div class="protocol-phases">
+                <div class="phase">
+                    <div class="phase-number">1</div>
+                    <div class="phase-content">
+                        <h3 class="phase-title">Baseline Stabilization (Days 1-7)</h3>
+                        <p class="phase-description">Reset your neurotransmitter baseline with foundational amino acids and adaptogens. No withdrawal, no crashes.</p>
+                        <div class="phase-compounds">
+                            <span class="compound">L-Theanine 400mg</span>
+                            <span class="compound">Magnesium Glycinate</span>
+                            <span class="compound">Rhodiola Extract</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="phase">
+                    <div class="phase-number">2</div>
+                    <div class="phase-content">
+                        <h3 class="phase-title">Cognitive Enhancement (Days 8-21)</h3>
+                        <p class="phase-description">Introduce targeted nootropics for focus, memory, and processing speed without stimulation.</p>
+                        <div class="phase-compounds">
+                            <span class="compound">Lion's Mane 1000mg</span>
+                            <span class="compound">Bacopa Monnieri</span>
+                            <span class="compound">Alpha-GPC</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="phase">
+                    <div class="phase-number">3</div>
+                    <div class="phase-content">
+                        <h3 class="phase-title">Performance Optimization (Days 22+)</h3>
+                        <p class="phase-description">Fine-tune your stack for sustained 9 PM productivity and creative flow states.</p>
+                        <div class="phase-compounds">
+                            <span class="compound">Noopept 10mg</span>
+                            <span class="compound">PQQ</span>
+                            <span class="compound">Personalized Stack</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="case-study">
+            <div class="case-header">
+                <div class="case-photo">EC</div>
+                <div class="case-info">
+                    <h3 class="case-name">Dr. Elena Chen, PhD</h3>
+                    <p class="case-details">Neuroscience Researcher • Stanford University • Caffeine Sensitivity Since Grad School</p>
+                </div>
+            </div>
+            
+            <div class="case-metrics">
+                <div class="metric-card">
+                    <div class="metric-value">9 PM</div>
+                    <div class="metric-label">Peak Productivity Time</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">3.2x</div>
+                    <div class="metric-label">Research Output Increase</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">0</div>
+                    <div class="metric-label">Anxiety Episodes</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="cta-section">
+            <h2 class="cta-headline">Get Your Personalized Protocol</h2>
+            <p class="cta-subtext">Based on your unique neurochemistry and work schedule</p>
+            
+            <div class="protocol-preview">
+                <ul class="preview-list">
+                    <li class="preview-item">Complete neurochemical assessment questionnaire</li>
+                    <li class="preview-item">Personalized 30-day adaptation protocol</li>
+                    <li class="preview-item">Evening productivity optimization guide</li>
+                    <li class="preview-item">Supplement timing & stacking charts</li>
+                    <li class="preview-item">Access to research database & studies</li>
+                </ul>
+            </div>
+            
+            <form class="form-container" id="protocol-form">
+                <input type="email" placeholder="Your email address" required>
+                <button type="submit" class="submit-btn">Get My Protocol →</button>
+            </form>
+            
+            <p class="disclaimer">
+                Based on 47 peer-reviewed studies. Individual results vary based on genetics and lifestyle factors.
+            </p>
+        </div>
+    </div>
+    
+    <script>
+        // Form submission
+        document.getElementById('protocol-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const btn = document.querySelector('.submit-btn');
+            btn.textContent = 'Analyzing your needs...';
+            btn.style.background = '#10B981';
+            btn.style.color = 'white';
+            
+            setTimeout(() => {
+                btn.textContent = 'Protocol ready! Check email ✓';
+            }, 2000);
+        });
+        
+        // Smooth reveal animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.1 });
+        
+        document.querySelectorAll('.neuro-card, .phase, .study-item').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'all 0.6s ease-out';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
