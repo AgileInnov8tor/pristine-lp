@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The 4-Hour Workday Trap: Calculate Your Lost Productivity Hours</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: #1a1a1a;
+            background: linear-gradient(180deg, #ffffff 0%, #f5f5f7 100%);
+        }
+        
+        .header {
+            background: #1a1a1a;
+            color: white;
+            padding: 60px 20px;
+            text-align: center;
+        }
+        
+        .time-display {
+            font-size: 72px;
+            font-weight: 800;
+            margin-bottom: 20px;
+            font-family: 'SF Mono', Monaco, monospace;
+            color: #ff4444;
+        }
+        
+        h1 {
+            font-size: 42px;
+            margin-bottom: 20px;
+            font-weight: 300;
+        }
+        
+        .subtitle {
+            font-size: 20px;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+        
+        .calculator-section {
+            background: white;
+            padding: 50px;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            margin-bottom: 40px;
+        }
+        
+        .calculator-title {
+            font-size: 32px;
+            text-align: center;
+            margin-bottom: 40px;
+            color: #1a1a1a;
+        }
+        
+        .input-grid {
+            display: grid;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .input-group {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 12px;
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+        }
+        
+        .input-group:hover {
+            border-color: #5a9;
+        }
+        
+        .input-label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: #2c3e50;
+            font-size: 18px;
+        }
+        
+        .slider-container {
+            position: relative;
+        }
+        
+        .slider {
+            width: 100%;
+            height: 8px;
+            border-radius: 4px;
+            background: #ddd;
+            outline: none;
+            -webkit-appearance: none;
+        }
+        
+        .slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: #5a9;
+            cursor: pointer;
+        }
+        
+        .slider-value {
+            position: absolute;
+            top: -35px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #5a9;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 16px;
+        }
+        
+        .time-visualization {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin: 40px 0;
+        }
+        
+        .time-block {
+            text-align: center;
+            padding: 30px;
+            border-radius: 12px;
+        }
+        
+        .lost-time {
+            background: #ffeaa7;
+            border: 2px solid #fdcb6e;
+        }
+        
+        .potential-time {
+            background: #a8e6cf;
+            border: 2px solid #00b894;
+        }
+        
+        .block-title {
+            font-size: 20px;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+        
+        .time-amount {
+            font-size: 48px;
+            font-weight: 800;
+            margin-bottom: 10px;
+        }
+        
+        .time-description {
+            font-size: 16px;
+            color: #666;
+        }
+        
+        .daily-schedule {
+            background: #f8f9fa;
+            padding: 40px;
+            border-radius: 12px;
+            margin: 40px 0;
+        }
+        
+        .schedule-title {
+            font-size: 24px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        
+        .schedule-grid {
+            display: grid;
+            grid-template-columns: repeat(24, 1fr);
+            gap: 2px;
+            margin-bottom: 20px;
+        }
+        
+        .hour-block {
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 10px;
+            font-weight: 600;
+            border-radius: 2px;
+        }
+        
+        .productive { background: #00b894; color: white; }
+        .semi-productive { background: #fdcb6e; }
+        .unproductive { background: #ff6b6b; color: white; }
+        .sleep { background: #74b9ff; }
+        
+        .schedule-legend {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+        
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+        }
+        
+        .legend-color {
+            width: 20px;
+            height: 20px;
+            border-radius: 4px;
+        }
+        
+        .impact-section {
+            background: #2c3e50;
+            color: white;
+            padding: 60px 40px;
+            border-radius: 20px;
+            text-align: center;
+            margin: 40px 0;
+        }
+        
+        .impact-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .impact-item {
+            background: rgba(255,255,255,0.1);
+            padding: 30px;
+            border-radius: 12px;
+        }
+        
+        .impact-number {
+            font-size: 48px;
+            font-weight: 700;
+            color: #ff6b6b;
+            display: block;
+            margin-bottom: 10px;
+        }
+        
+        .impact-label {
+            font-size: 16px;
+            opacity: 0.9;
+        }
+        
+        .solution-section {
+            background: white;
+            padding: 60px;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            margin: 40px 0;
+        }
+        
+        .solution-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .solution-title {
+            font-size: 36px;
+            margin-bottom: 15px;
+        }
+        
+        .before-after-schedule {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin: 40px 0;
+        }
+        
+        .schedule-comparison {
+            text-align: center;
+        }
+        
+        .mini-schedule {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 2px;
+            margin: 20px 0;
+        }
+        
+        .mini-hour {
+            height: 30px;
+            border-radius: 2px;
+        }
+        
+        .cta-section {
+            background: linear-gradient(135deg, #5a9 0%, #4a8 100%);
+            color: white;
+            padding: 60px 40px;
+            text-align: center;
+            border-radius: 20px;
+        }
+        
+        .cta-title {
+            font-size: 42px;
+            margin-bottom: 20px;
+        }
+        
+        .productivity-promise {
+            font-size: 32px;
+            font-weight: 700;
+            margin: 30px 0;
+            color: #ffeaa7;
+        }
+        
+        .email-form {
+            max-width: 500px;
+            margin: 40px auto 0;
+        }
+        
+        .email-form input {
+            width: 100%;
+            padding: 18px;
+            font-size: 16px;
+            border: none;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+        
+        .submit-btn {
+            background: white;
+            color: #5a9;
+            padding: 18px 40px;
+            font-size: 18px;
+            font-weight: 700;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            width: 100%;
+            transition: all 0.3s ease;
+        }
+        
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+        
+        @media (max-width: 768px) {
+            .time-display { font-size: 48px; }
+            h1 { font-size: 32px; }
+            .time-visualization { grid-template-columns: 1fr; }
+            .impact-grid { grid-template-columns: 1fr; }
+            .before-after-schedule { grid-template-columns: 1fr; }
+            .calculator-section { padding: 30px 20px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="time-display">4:38 PM</div>
+        <h1>Your Day Is Already Over</h1>
+        <p class="subtitle">While others work until 6 PM, you're mentally checked out by 2. Calculate the true cost of your limited productivity window.</p>
+    </div>
+    
+    <div class="container">
+        <div class="calculator-section">
+            <h2 class="calculator-title">The Productivity Hour Calculator</h2>
+            
+            <div class="input-grid">
+                <div class="input-group">
+                    <label class="input-label">What time do you start feeling brain fog?</label>
+                    <div class="slider-container">
+                        <input type="range" class="slider" id="fogTime" min="10" max="18" value="14" step="0.5" oninput="updateCalculations()">
+                        <div class="slider-value" id="fogTimeDisplay">2:00 PM</div>
+                    </div>
+                </div>
+                
+                <div class="input-group">
+                    <label class="input-label">How many productive hours do you currently have?</label>
+                    <div class="slider-container">
+                        <input type="range" class="slider" id="productiveHours" min="2" max="8" value="4" step="0.5" oninput="updateCalculations()">
+                        <div class="slider-value" id="productiveHoursDisplay">4 hours</div>
+                    </div>
+                </div>
+                
+                <div class="input-group">
+                    <label class="input-label">Your hourly rate (or desired rate)?</label>
+                    <div class="slider-container">
+                        <input type="range" class="slider" id="hourlyRate" min="50" max="500" value="125" step="25" oninput="updateCalculations()">
+                        <div class="slider-value" id="hourlyRateDisplay">$125/hr</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="time-visualization">
+                <div class="time-block lost-time">
+                    <h3 class="block-title">Hours Lost Daily</h3>
+                    <div class="time-amount" id="lostHours">4</div>
+                    <p class="time-description">Potential productive time wasted</p>
+                </div>
+                
+                <div class="time-block potential-time">
+                    <h3 class="block-title">Income Lost Monthly</h3>
+                    <div class="time-amount" id="lostIncome">$10,000</div>
+                    <p class="time-description">Based on your hourly rate</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="daily-schedule">
+            <h3 class="schedule-title">Your Current Day vs. Potential Day</h3>
+            
+            <div class="schedule-grid" id="currentSchedule">
+                <!-- Generated by JavaScript -->
+            </div>
+            
+            <div class="schedule-legend">
+                <div class="legend-item">
+                    <div class="legend-color productive"></div>
+                    <span>Peak Productivity</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color semi-productive"></div>
+                    <span>Declining Focus</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color unproductive"></div>
+                    <span>Brain Fog</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color sleep"></div>
+                    <span>Sleep</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="impact-section">
+            <h2 style="font-size: 36px; margin-bottom: 20px;">The Compound Effect Over Time</h2>
+            
+            <div class="impact-grid">
+                <div class="impact-item">
+                    <span class="impact-number" id="yearlyLostHours">1,040</span>
+                    <span class="impact-label">Hours lost per year</span>
+                </div>
+                <div class="impact-item">
+                    <span class="impact-number" id="yearlyLostIncome">$130K</span>
+                    <span class="impact-label">Income lost per year</span>
+                </div>
+                <div class="impact-item">
+                    <span class="impact-number" id="projectsLost">26</span>
+                    <span class="impact-label">Projects you could complete</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="solution-section">
+            <div class="solution-header">
+                <h2 class="solution-title">What If You Could Work Like This?</h2>
+                <p style="font-size: 20px; color: #666;">See how stimulant-free professionals reclaim their full day</p>
+            </div>
+            
+            <div class="before-after-schedule">
+                <div class="schedule-comparison">
+                    <h3 style="margin-bottom: 20px;">Your Current Schedule</h3>
+                    <div class="mini-schedule">
+                        <div class="mini-hour sleep"></div>
+                        <div class="mini-hour sleep"></div>
+                        <div class="mini-hour productive"></div>
+                        <div class="mini-hour productive"></div>
+                        <div class="mini-hour productive"></div>
+                        <div class="mini-hour productive"></div>
+                        <div class="mini-hour semi-productive"></div>
+                        <div class="mini-hour unproductive"></div>
+                        <div class="mini-hour unproductive"></div>
+                        <div class="mini-hour unproductive"></div>
+                        <div class="mini-hour unproductive"></div>
+                        <div class="mini-hour sleep"></div>
+                    </div>
+                    <p style="color: #666; font-size: 18px;">4 productive hours</p>
+                </div>
+                
+                <div class="schedule-comparison">
+                    <h3 style="margin-bottom: 20px;">Your Potential Schedule</h3>
+                    <div class="mini-schedule">
+                        <div class="mini-hour sleep"></div>
+                        <div class="mini-hour sleep"></div>
+                        <div class="mini-hour productive"></div>
+                        <div class="mini-hour productive"></div>
+                        <div class="mini-hour productive"></div>
+                        <div class="mini-hour productive"></div>
+                        <div class="mini-hour productive"></div>
+                        <div class="mini-hour productive"></div>
+                        <div class="mini-hour productive"></div>
+                        <div class="mini-hour productive"></div>
+                        <div class="mini-hour productive"></div>
+                        <div class="mini-hour sleep"></div>
+                    </div>
+                    <p style="color: #00b894; font-size: 18px; font-weight: 600;">9 productive hours</p>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 40px;">
+                <p style="font-size: 24px; color: #2c3e50; font-weight: 600;">
+                    That's <span style="color: #00b894;">125% more</span> productive time every single day
+                </p>
+            </div>
+        </div>
+        
+        <div class="cta-section">
+            <h2 class="cta-title">Reclaim Your Lost Hours</h2>
+            <p style="font-size: 20px; margin-bottom: 30px;">Join 3,247 professionals who've extended their productive day without stimulants</p>
+            
+            <div class="productivity-promise">
+                Your potential: +<span id="extraHours">5</span> productive hours daily
+            </div>
+            
+            <form class="email-form" onsubmit="handleSubmit(event)">
+                <input type="email" placeholder="Enter your email" required>
+                <button type="submit" class="submit-btn">Get My Productivity Protocol</button>
+            </form>
+            
+            <p style="margin-top: 20px; font-size: 14px; opacity: 0.9;">
+                Free protocol includes: Daily schedule optimizer • Energy mapping guide • 7-day trial of Pristine Zero
+            </p>
+        </div>
+    </div>
+    
+    <script>
+        function formatTime(hour) {
+            const period = hour >= 12 ? 'PM' : 'AM';
+            const displayHour = hour > 12 ? hour - 12 : hour;
+            return `${displayHour}:00 ${period}`;
+        }
+        
+        function updateCalculations() {
+            // Get values
+            const fogTime = parseFloat(document.getElementById('fogTime').value);
+            const productiveHours = parseFloat(document.getElementById('productiveHours').value);
+            const hourlyRate = parseFloat(document.getElementById('hourlyRate').value);
+            
+            // Update displays
+            document.getElementById('fogTimeDisplay').textContent = formatTime(fogTime);
+            document.getElementById('productiveHoursDisplay').textContent = productiveHours + ' hours';
+            document.getElementById('hourlyRateDisplay').textContent = '$' + hourlyRate + '/hr';
+            
+            // Calculate losses
+            const potentialHours = 9; // Could work 9 productive hours
+            const lostHours = potentialHours - productiveHours;
+            const dailyLost = lostHours * hourlyRate;
+            const monthlyLost = dailyLost * 20; // Working days
+            const yearlyLost = dailyLost * 260; // Working days per year
+            
+            // Update results
+            document.getElementById('lostHours').textContent = lostHours.toFixed(1);
+            document.getElementById('lostIncome').textContent = '$' + monthlyLost.toLocaleString();
+            document.getElementById('yearlyLostHours').textContent = (lostHours * 260).toLocaleString();
+            document.getElementById('yearlyLostIncome').textContent = '$' + Math.round(yearlyLost / 1000) + 'K';
+            document.getElementById('projectsLost').textContent = Math.round(lostHours * 260 / 40);
+            document.getElementById('extraHours').textContent = lostHours.toFixed(0);
+            
+            // Update schedule visualization
+            updateSchedule(productiveHours, fogTime);
+        }
+        
+        function updateSchedule(productiveHours, fogTime) {
+            const schedule = document.getElementById('currentSchedule');
+            schedule.innerHTML = '';
+            
+            for (let hour = 0; hour < 24; hour++) {
+                const block = document.createElement('div');
+                block.className = 'hour-block';
+                
+                if (hour < 6 || hour > 22) {
+                    block.className += ' sleep';
+                } else if (hour >= 8 && hour < 8 + productiveHours) {
+                    block.className += ' productive';
+                } else if (hour >= 8 + productiveHours && hour < fogTime) {
+                    block.className += ' semi-productive';
+                } else if (hour >= fogTime && hour <= 22) {
+                    block.className += ' unproductive';
+                }
+                
+                if (hour === 8 || hour === 12 || hour === 17) {
+                    block.textContent = hour;
+                }
+                
+                schedule.appendChild(block);
+            }
+        }
+        
+        function handleSubmit(event) {
+            event.preventDefault();
+            const extraHours = document.getElementById('extraHours').textContent;
+            alert(`Your personalized productivity protocol is ready! You could gain ${extraHours} productive hours daily. Check your email.`);
+            event.target.reset();
+        }
+        
+        // Initialize
+        updateCalculations();
+    </script>
+</body>
+</html>
