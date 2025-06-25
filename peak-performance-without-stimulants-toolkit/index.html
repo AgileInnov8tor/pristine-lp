@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Peak Performance Without Stimulants - Free Toolkit</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Georgia', 'Times New Roman', serif;
+            line-height: 1.7;
+            color: #2c3e50;
+            background-color: #fafbfc;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+        
+        h1 {
+            font-size: 42px;
+            line-height: 1.3;
+            color: #2c3e50;
+            margin-bottom: 20px;
+            font-weight: 400;
+            text-align: center;
+        }
+        
+        .subheadline {
+            font-size: 20px;
+            color: #7f8c8d;
+            text-align: center;
+            margin-bottom: 50px;
+            font-weight: 300;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .toolkit-showcase {
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            margin-bottom: 40px;
+            display: flex;
+            align-items: center;
+            gap: 40px;
+        }
+        
+        .toolkit-visual {
+            flex: 0 0 250px;
+            background: linear-gradient(135deg, #e8f4f8 0%, #d1e7dd 100%);
+            height: 320px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            color: #5a9;
+            text-align: center;
+            padding: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .toolkit-visual::before {
+            content: "📘";
+            font-size: 80px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            opacity: 0.2;
+        }
+        
+        .toolkit-content {
+            flex: 1;
+        }
+        
+        .description {
+            font-size: 18px;
+            color: #555;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+        
+        .contents-section {
+            background: #f8f9fa;
+            padding: 40px;
+            border-radius: 12px;
+            margin-bottom: 40px;
+        }
+        
+        .contents-section h2 {
+            font-size: 24px;
+            margin-bottom: 25px;
+            color: #2c3e50;
+            font-weight: 400;
+            text-align: center;
+        }
+        
+        .contents-list {
+            list-style: none;
+            display: grid;
+            gap: 20px;
+        }
+        
+        .contents-list li {
+            background: white;
+            padding: 20px 25px;
+            border-radius: 8px;
+            border-left: 4px solid #5a9;
+            transition: all 0.3s ease;
+        }
+        
+        .contents-list li:hover {
+            transform: translateX(5px);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        
+        .contents-list strong {
+            display: block;
+            color: #2c3e50;
+            font-size: 18px;
+            margin-bottom: 5px;
+        }
+        
+        .contents-list span {
+            color: #7f8c8d;
+            font-size: 16px;
+        }
+        
+        .benefits-section {
+            margin-bottom: 40px;
+        }
+        
+        .benefits-section h2 {
+            font-size: 24px;
+            margin-bottom: 25px;
+            color: #2c3e50;
+            font-weight: 400;
+            text-align: center;
+        }
+        
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        
+        .benefit-item {
+            text-align: center;
+            padding: 20px;
+        }
+        
+        .benefit-item .icon {
+            font-size: 40px;
+            margin-bottom: 15px;
+            display: block;
+        }
+        
+        .benefit-item p {
+            font-size: 16px;
+            color: #555;
+        }
+        
+        .form-section {
+            background: white;
+            padding: 50px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .form-headline {
+            font-size: 28px;
+            margin-bottom: 20px;
+            color: #2c3e50;
+            font-weight: 400;
+        }
+        
+        .email-form {
+            max-width: 450px;
+            margin: 0 auto;
+        }
+        
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+        
+        .email-form input {
+            width: 100%;
+            padding: 15px 20px;
+            font-size: 16px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-family: inherit;
+            transition: all 0.3s ease;
+        }
+        
+        .email-form input:focus {
+            outline: none;
+            border-color: #5a9;
+            background: #f9fffe;
+        }
+        
+        .submit-btn {
+            background: #5a9;
+            color: white;
+            padding: 18px 40px;
+            font-size: 18px;
+            font-weight: 400;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            width: 100%;
+            transition: all 0.3s ease;
+            font-family: inherit;
+        }
+        
+        .submit-btn:hover {
+            background: #4a8;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(90, 153, 153, 0.3);
+        }
+        
+        .delivery-info {
+            font-size: 14px;
+            color: #7f8c8d;
+            margin-top: 20px;
+        }
+        
+        .preview-section {
+            background: #fefefe;
+            padding: 30px;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+        
+        .preview-section h3 {
+            font-size: 20px;
+            margin-bottom: 15px;
+            color: #2c3e50;
+            font-weight: 400;
+        }
+        
+        .preview-content {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            font-style: italic;
+            color: #555;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .testimonial {
+            background: #e8f4f8;
+            padding: 40px;
+            border-radius: 12px;
+            margin-bottom: 40px;
+            text-align: center;
+            position: relative;
+        }
+        
+        .testimonial p {
+            font-size: 18px;
+            font-style: italic;
+            color: #2c3e50;
+            margin-bottom: 20px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .testimonial-author {
+            color: #5a9;
+            font-weight: 600;
+            font-style: normal;
+        }
+        
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 32px;
+            }
+            
+            .toolkit-showcase {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .toolkit-visual {
+                flex: none;
+                width: 100%;
+                height: 200px;
+            }
+            
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+            
+            .benefits-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .trust-badges {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .trust-badge {
+            font-size: 14px;
+            color: #7f8c8d;
+        }
+        
+        .arrow {
+            display: inline-block;
+            margin-left: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Finally: Peak Performance For People Who Can't Tolerate Caffeine (Or Any Stimulants)</h1>
+        
+        <p class="subheadline">Download the free toolkit that's helping sensitive professionals reclaim their focus, energy, and earning potential—without anxiety, jitters, or crashes</p>
+        
+        <div class="toolkit-showcase">
+            <div class="toolkit-visual">
+                <div style="position: relative; z-index: 1;">
+                    <strong>The Stimulant-Free</strong><br>
+                    <span style="font-size: 24px; font-weight: 300;">Peak Performance</span><br>
+                    <strong>Toolkit</strong>
+                </div>
+            </div>
+            <div class="toolkit-content">
+                <p class="description">You're a high-performer trapped in a low-energy body. While everyone else powers through with coffee, pre-workouts, and energy drinks, you're stuck choosing between anxious productivity or calm exhaustion. Even green tea sends your heart racing.</p>
+                
+                <p class="description">The Stimulant-Free Peak Performance Toolkit is your evidence-based guide to reclaiming competitive energy without compromising your sensitive system.</p>
+            </div>
+        </div>
+        
+        <div class="contents-section">
+            <h2>Inside This Toolkit:</h2>
+            <ul class="contents-list">
+                <li>
+                    <strong>The Adaptogen Advantage</strong>
+                    <span>5 clinically-proven energy enhancers that work WITH your sensitive system, not against it</span>
+                </li>
+                <li>
+                    <strong>The Creative Flow Protocol</strong>
+                    <span>Neuroscientist-designed focus techniques that outperform caffeine for deep work</span>
+                </li>
+                <li>
+                    <strong>Timing Is Everything</strong>
+                    <span>Hour-by-hour optimization guide for natural energy peaks</span>
+                </li>
+                <li>
+                    <strong>Case Study: Dr. Sarah's Story</strong>
+                    <span>How she went from losing $30K in contracts to billing her highest year ever</span>
+                </li>
+                <li>
+                    <strong>The Sensitivity Superpower</strong>
+                    <span>Why your nervous system difference is actually a competitive advantage</span>
+                </li>
+                <li>
+                    <strong>Bonus: 7-Day Meal Plan</strong>
+                    <span>Stimulant-free nutrition guide for sustained, natural energy</span>
+                </li>
+            </ul>
+        </div>
+        
+        <div class="benefits-section">
+            <h2>How You'll Benefit:</h2>
+            <div class="benefits-grid">
+                <div class="benefit-item">
+                    <span class="icon">💰</span>
+                    <p>Stop losing projects and income due to energy limitations</p>
+                </div>
+                <div class="benefit-item">
+                    <span class="icon">🎯</span>
+                    <p>Finally experience sustained focus without anxiety or crashes</p>
+                </div>
+                <div class="benefit-item">
+                    <span class="icon">🔬</span>
+                    <p>Discover which "gentle" supplements actually work (and which are marketing myths)</p>
+                </div>
+                <div class="benefit-item">
+                    <span class="icon">⚡</span>
+                    <p>Learn to optimize your unique nervous system instead of fighting it</p>
+                </div>
+                <div class="benefit-item">
+                    <span class="icon">🚀</span>
+                    <p>Get back to peak performance on YOUR terms</p>
+                </div>
+                <div class="benefit-item">
+                    <span class="icon">🌟</span>
+                    <p>Turn your sensitivity into a professional superpower</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="form-section">
+            <h2 class="form-headline">Get Instant Access to Your Free Toolkit</h2>
+            
+            <form class="email-form" onsubmit="handleSubmit(event)">
+                <div class="form-row">
+                    <input type="text" placeholder="First Name" required>
+                    <input type="text" placeholder="Last Name" required>
+                </div>
+                <input type="email" placeholder="Email Address" required style="margin-bottom: 15px;">
+                <button type="submit" class="submit-btn">Send My Stimulant-Free Toolkit <span class="arrow">→</span></button>
+            </form>
+            
+            <p class="delivery-info">Your toolkit will arrive in your inbox within 2 minutes.<br>Check your spam folder if you don't see it immediately.</p>
+            
+            <div class="trust-badges">
+                <span class="trust-badge">✓ 100% Free</span>
+                <span class="trust-badge">✓ No Spam Ever</span>
+                <span class="trust-badge">✓ Instant Download</span>
+            </div>
+        </div>
+        
+        <div class="preview-section">
+            <h3>Preview: From Page 7 of Your Toolkit</h3>
+            <div class="preview-content">
+                "The Rhodiola Protocol: Start with 200mg standardized to 3% rosavins and 1% salidroside, taken 30 minutes before your most demanding cognitive task. Unlike caffeine's immediate spike, expect a gentle wave of clarity that builds over 45 minutes and sustains for 4-6 hours..."
+            </div>
+        </div>
+        
+        <div class="testimonial">
+            <p>"I thought my freelance career was over when I developed caffeine sensitivity at 32. This toolkit introduced me to solutions I didn't know existed. I'm now billing more than when I was downing 4 espressos a day—and sleeping better too."</p>
+            <p class="testimonial-author">- Michael K., UX Designer</p>
+        </div>
+    </div>
+    
+    <script>
+        function handleSubmit(event) {
+            event.preventDefault();
+            alert('Success! Your Stimulant-Free Peak Performance Toolkit is on its way. Check your email!');
+            event.target.reset();
+        }
+    </script>
+</body>
+</html>
