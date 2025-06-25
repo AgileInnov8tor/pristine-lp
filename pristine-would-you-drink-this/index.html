@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Would You Drink This? The Ingredient List That Changes Everything</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #1A202C;
+            background: #000;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Hero Section */
+        .hero-section {
+            background: #000;
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+            border-bottom: 3px solid #FF0000;
+        }
+        
+        .warning-label {
+            display: inline-block;
+            background: #FF0000;
+            color: white;
+            padding: 8px 20px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 30px;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+        
+        .headline {
+            font-size: 56px;
+            line-height: 1.2;
+            margin-bottom: 30px;
+            font-weight: 900;
+        }
+        
+        /* Visual Comparison */
+        .comparison-visual {
+            margin: 60px auto;
+            max-width: 800px;
+            background: #111;
+            border: 2px solid #333;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+        
+        .comparison-header {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+        }
+        
+        .comparison-title {
+            padding: 20px;
+            font-size: 24px;
+            font-weight: bold;
+            text-align: center;
+        }
+        
+        .loaded-tea-title {
+            background: #330000;
+            color: #FF6B6B;
+            border-right: 2px solid #333;
+        }
+        
+        .pristine-title {
+            background: #003300;
+            color: #4ECDC4;
+        }
+        
+        .comparison-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            min-height: 400px;
+        }
+        
+        .ingredient-column {
+            padding: 30px;
+        }
+        
+        .loaded-tea-column {
+            background: #1A0000;
+            border-right: 2px solid #333;
+        }
+        
+        .pristine-column {
+            background: #001A00;
+        }
+        
+        /* Value Prop Section */
+        .value-prop-section {
+            padding: 60px 0;
+            background: #111;
+            text-align: center;
+        }
+        
+        .value-text {
+            font-size: 20px;
+            line-height: 1.8;
+            color: #CCC;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        /* Ingredient Deep Dive */
+        .ingredients-section {
+            padding: 80px 0;
+            background: #000;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 42px;
+            margin-bottom: 60px;
+            color: white;
+        }
+        
+        .ingredient-cards {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
+        }
+        
+        .ingredient-card {
+            background: #111;
+            border: 2px solid #FF0000;
+            border-radius: 12px;
+            padding: 40px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .danger-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: #FF0000;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+        
+        .ingredient-name {
+            font-size: 28px;
+            color: #FF6B6B;
+            margin-bottom: 15px;
+        }
+        
+        .ingredient-subtitle {
+            font-size: 16px;
+            color: #999;
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+        
+        .ingredient-facts {
+            color: #CCC;
+            line-height: 1.8;
+        }
+        
+        .fact-item {
+            margin-bottom: 15px;
+            padding-left: 20px;
+            position: relative;
+        }
+        
+        .fact-item:before {
+            content: "⚠️";
+            position: absolute;
+            left: 0;
+        }
+        
+        /* Visual Comparison Grid */
+        .visual-grid-section {
+            padding: 80px 0;
+            background: #111;
+        }
+        
+        .visual-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .visual-column {
+            text-align: center;
+        }
+        
+        .column-header {
+            font-size: 32px;
+            margin-bottom: 40px;
+            padding: 20px;
+            border-radius: 8px;
+        }
+        
+        .bad-header {
+            background: #330000;
+            color: #FF6B6B;
+        }
+        
+        .good-header {
+            background: #003300;
+            color: #4ECDC4;
+        }
+        
+        .ingredient-item {
+            background: #000;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            font-size: 18px;
+            transition: all 0.3s ease;
+        }
+        
+        .bad-ingredient {
+            border: 1px solid #660000;
+            color: #FF6B6B;
+        }
+        
+        .bad-ingredient:hover {
+            background: #330000;
+            transform: scale(1.05);
+        }
+        
+        .good-ingredient {
+            border: 1px solid #006600;
+            color: #4ECDC4;
+        }
+        
+        .good-ingredient:hover {
+            background: #003300;
+            transform: scale(1.05);
+        }
+        
+        .ingredient-source {
+            font-size: 14px;
+            opacity: 0.7;
+            margin-top: 5px;
+        }
+        
+        /* Shock Stats */
+        .stats-section {
+            padding: 80px 0;
+            background: #000;
+            text-align: center;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 40px;
+            max-width: 1000px;
+            margin: 60px auto 0;
+        }
+        
+        .stat-card {
+            padding: 30px 20px;
+            background: #111;
+            border: 1px solid #333;
+            border-radius: 8px;
+        }
+        
+        .stat-number {
+            font-size: 48px;
+            font-weight: bold;
+            color: #FF0000;
+            display: block;
+            margin-bottom: 10px;
+        }
+        
+        .stat-label {
+            font-size: 14px;
+            color: #999;
+            text-transform: uppercase;
+        }
+        
+        /* Form Section */
+        .form-section {
+            padding: 80px 0;
+            background: #111;
+            border-top: 3px solid #FF0000;
+        }
+        
+        .form-container {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .form-headline {
+            font-size: 42px;
+            margin-bottom: 20px;
+            color: white;
+        }
+        
+        .guide-preview {
+            background: #000;
+            border: 2px solid #FF0000;
+            padding: 40px;
+            border-radius: 16px;
+            margin-bottom: 40px;
+        }
+        
+        .guide-mockup {
+            width: 300px;
+            height: 400px;
+            background: linear-gradient(135deg, #FF0000, #000);
+            border-radius: 8px;
+            margin: 0 auto 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: bold;
+            color: white;
+        }
+        
+        .guide-contents {
+            text-align: left;
+            color: #CCC;
+        }
+        
+        .content-item {
+            margin-bottom: 15px;
+            padding-left: 30px;
+            position: relative;
+        }
+        
+        .content-item:before {
+            content: "📋";
+            position: absolute;
+            left: 0;
+        }
+        
+        .form-box {
+            background: #000;
+            padding: 40px;
+            border: 2px solid #333;
+            border-radius: 12px;
+        }
+        
+        .email-input {
+            width: 100%;
+            padding: 20px;
+            font-size: 18px;
+            background: #111;
+            border: 1px solid #333;
+            color: white;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        
+        .email-input:focus {
+            outline: none;
+            border-color: #FF0000;
+        }
+        
+        .cta-button {
+            background: #FF0000;
+            color: white;
+            border: none;
+            padding: 20px 40px;
+            font-size: 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            width: 100%;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+        }
+        
+        .cta-button:hover {
+            background: #CC0000;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(255,0,0,0.3);
+        }
+        
+        .privacy-text {
+            margin-top: 15px;
+            font-size: 14px;
+            color: #666;
+        }
+        
+        /* Truth Section */
+        .truth-section {
+            padding: 80px 0;
+            background: #000;
+            text-align: center;
+        }
+        
+        .truth-statement {
+            font-size: 32px;
+            line-height: 1.5;
+            color: white;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .truth-highlight {
+            color: #FF0000;
+            font-weight: bold;
+        }
+        
+        @media (max-width: 768px) {
+            .headline {
+                font-size: 36px;
+            }
+            
+            .comparison-header,
+            .comparison-content,
+            .visual-grid,
+            .ingredient-cards {
+                grid-template-columns: 1fr;
+            }
+            
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container">
+            <div class="warning-label">⚠️ WARNING ⚠️</div>
+            
+            <h1 class="headline">
+                Would You Drink This?<br>
+                <span style="font-size: 36px; font-weight: 400;">The Ingredient List That Changes Everything</span>
+            </h1>
+            
+            <!-- Visual Comparison -->
+            <div class="comparison-visual">
+                <div class="comparison-header">
+                    <div class="comparison-title loaded-tea-title">LOADED TEA</div>
+                    <div class="comparison-title pristine-title">PRISTINE</div>
+                </div>
+                <div class="comparison-content">
+                    <div class="ingredient-column loaded-tea-column">
+                        <div style="text-align: center; font-size: 72px; margin-top: 100px;">
+                            ☠️
+                        </div>
+                        <p style="text-align: center; margin-top: 20px; color: #FF6B6B;">
+                            14 Artificial Chemicals
+                        </p>
+                    </div>
+                    <div class="ingredient-column pristine-column">
+                        <div style="text-align: center; font-size: 72px; margin-top: 100px;">
+                            🌱
+                        </div>
+                        <p style="text-align: center; margin-top: 20px; color: #4ECDC4;">
+                            14 Natural Plants
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Value Prop Section -->
+    <section class="value-prop-section">
+        <div class="container">
+            <p class="value-text">
+                We photographed the actual ingredients in loaded tea under a microscope. What we found will shock you. This free guide reveals exactly what you're putting in your body—and what you could be drinking instead.
+            </p>
+        </div>
+    </section>
+    
+    <!-- Ingredient Deep Dive -->
+    <section class="ingredients-section">
+        <div class="container">
+            <h2 class="section-title">The Chemicals You're Drinking Daily</h2>
+            
+            <div class="ingredient-cards">
+                <div class="ingredient-card">
+                    <div class="danger-badge">Banned in EU</div>
+                    <h3 class="ingredient-name">Red 40 (Allura Red AC)</h3>
+                    <p class="ingredient-subtitle">Petroleum-Based Synthetic Dye</p>
+                    <div class="ingredient-facts">
+                        <div class="fact-item">Derived from petroleum byproducts</div>
+                        <div class="fact-item">Linked to hyperactivity in children</div>
+                        <div class="fact-item">Banned in several European countries</div>
+                        <div class="fact-item">Requires warning labels in UK</div>
+                    </div>
+                </div>
+                
+                <div class="ingredient-card">
+                    <div class="danger-badge">Gut Destroyer</div>
+                    <h3 class="ingredient-name">Sucralose</h3>
+                    <p class="ingredient-subtitle">600x Sweeter Than Sugar</p>
+                    <div class="ingredient-facts">
+                        <div class="fact-item">Alters gut bacteria composition</div>
+                        <div class="fact-item">Confuses hunger signals</div>
+                        <div class="fact-item">May increase insulin resistance</div>
+                        <div class="fact-item">Accumulates in wastewater</div>
+                    </div>
+                </div>
+                
+                <div class="ingredient-card">
+                    <div class="danger-badge">Brain Barrier</div>
+                    <h3 class="ingredient-name">Blue 1 (Brilliant Blue)</h3>
+                    <p class="ingredient-subtitle">Coal Tar Derivative</p>
+                    <div class="ingredient-facts">
+                        <div class="fact-item">Crosses blood-brain barrier</div>
+                        <div class="fact-item">Made from coal tar</div>
+                        <div class="fact-item">Linked to ADHD symptoms</div>
+                        <div class="fact-item">Causes allergic reactions</div>
+                    </div>
+                </div>
+                
+                <div class="ingredient-card">
+                    <div class="danger-badge">Accumulates</div>
+                    <h3 class="ingredient-name">Acesulfame Potassium</h3>
+                    <p class="ingredient-subtitle">Synthetic Sweetener</p>
+                    <div class="ingredient-facts">
+                        <div class="fact-item">Body cannot process</div>
+                        <div class="fact-item">Found in breast milk</div>
+                        <div class="fact-item">Affects thyroid function</div>
+                        <div class="fact-item">200x sweeter than sugar</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Visual Grid Comparison -->
+    <section class="visual-grid-section">
+        <div class="container">
+            <h2 class="section-title">Side-by-Side Comparison</h2>
+            
+            <div class="visual-grid">
+                <div class="visual-column">
+                    <h3 class="column-header bad-header">What You're Drinking</h3>
+                    
+                    <div class="ingredient-item bad-ingredient">
+                        Red 40
+                        <div class="ingredient-source">From: Petroleum</div>
+                    </div>
+                    <div class="ingredient-item bad-ingredient">
+                        Blue 1
+                        <div class="ingredient-source">From: Coal Tar</div>
+                    </div>
+                    <div class="ingredient-item bad-ingredient">
+                        Sucralose
+                        <div class="ingredient-source">From: Chlorinated Sugar</div>
+                    </div>
+                    <div class="ingredient-item bad-ingredient">
+                        Acesulfame K
+                        <div class="ingredient-source">From: Synthetic Lab</div>
+                    </div>
+                    <div class="ingredient-item bad-ingredient">
+                        Yellow 5
+                        <div class="ingredient-source">From: Petroleum</div>
+                    </div>
+                </div>
+                
+                <div class="visual-column">
+                    <h3 class="column-header good-header">What You Could Drink</h3>
+                    
+                    <div class="ingredient-item good-ingredient">
+                        Yerba Mate
+                        <div class="ingredient-source">From: South American Holly</div>
+                    </div>
+                    <div class="ingredient-item good-ingredient">
+                        Lion's Mane
+                        <div class="ingredient-source">From: Medicinal Mushroom</div>
+                    </div>
+                    <div class="ingredient-item good-ingredient">
+                        L-Theanine
+                        <div class="ingredient-source">From: Green Tea</div>
+                    </div>
+                    <div class="ingredient-item good-ingredient">
+                        Ashwagandha
+                        <div class="ingredient-source">From: Ancient Herb</div>
+                    </div>
+                    <div class="ingredient-item good-ingredient">
+                        Stevia
+                        <div class="ingredient-source">From: Natural Plant</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Shock Stats -->
+    <section class="stats-section">
+        <div class="container">
+            <h2 class="section-title">The Numbers Are Shocking</h2>
+            
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <span class="stat-number">14</span>
+                    <span class="stat-label">Artificial Chemicals</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">4</span>
+                    <span class="stat-label">Banned in Europe</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">600x</span>
+                    <span class="stat-label">Sweeter Than Sugar</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">0</span>
+                    <span class="stat-label">Health Benefits</span>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Form Section -->
+    <section class="form-section">
+        <div class="container">
+            <div class="form-container">
+                <h2 class="form-headline">See the Truth for Yourself</h2>
+                
+                <div class="guide-preview">
+                    <div class="guide-mockup">[EXPOSÉ GUIDE]</div>
+                    
+                    <h3 style="font-size: 28px; margin-bottom: 20px; color: white;">
+                        The Shocking Truth Guide Reveals:
+                    </h3>
+                    
+                    <div class="guide-contents">
+                        <div class="content-item">Red 40 (Allura Red AC) - Derived from petroleum, banned in several countries</div>
+                        <div class="content-item">Sucralose - 600x sweeter than sugar, alters gut bacteria</div>
+                        <div class="content-item">Acesulfame Potassium - Your body can't process, accumulates in breast milk</div>
+                        <div class="content-item">Blue 1 (Brilliant Blue) - Coal tar derivative, crosses blood-brain barrier</div>
+                        <div class="content-item">Side-by-side comparisons - See what artificial vs. natural looks like</div>
+                        <div class="content-item">Health impact breakdown - What each chemical does to your body</div>
+                    </div>
+                </div>
+                
+                <div class="form-box">
+                    <p style="font-size: 18px; margin-bottom: 20px; color: #CCC;">
+                        Knowledge is power. Get the guide that nutrition clubs don't want you to read.
+                    </p>
+                    
+                    <form>
+                        <input type="email" 
+                               placeholder="Enter your email address" 
+                               class="email-input"
+                               required>
+                        
+                        <button type="submit" class="cta-button">
+                            Show Me What's Really in My Drink
+                        </button>
+                        
+                        <p class="privacy-text">
+                            Just facts, no judgment. Unsubscribe anytime.
+                        </p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Truth Section -->
+    <section class="truth-section">
+        <div class="container">
+            <p class="truth-statement">
+                You have the right to know <span class="truth-highlight">exactly</span> what you're putting in your body.<br>
+                The question is: <span class="truth-highlight">Will you look?</span>
+            </p>
+        </div>
+    </section>
+</body>
+</html>
