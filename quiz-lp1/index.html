@@ -51,6 +51,23 @@
             position: relative;
         }
         
+        .progress-bar-container {
+            width: 100%;
+            height: 8px;
+            background-color: #e2e8f0;
+            border-radius: 4px;
+            overflow: hidden;
+            margin-bottom: 10px;
+        }
+        
+        .progress-bar {
+            height: 100%;
+            background-color: #4a5568;
+            border-radius: 4px;
+            transition: width 0.3s ease;
+            width: 0%;
+        }
+        
         .trust-badges {
             position: absolute;
             top: 10px;
@@ -79,7 +96,7 @@
         }
         
         .quiz-body {
-            padding: 40px 30px;
+            padding: 8px 30px 20px 30px;
             background: #fafafa;
             min-height: 500px;
             display: flex;
@@ -92,19 +109,6 @@
             display: none;
             width: 100%;
             animation: fadeIn 0.3s ease;
-            position: relative;
-            padding-top: 60px;
-        }
-        
-        .screen .question,
-        .screen h1,
-        .screen h2,
-        .screen h3 {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            text-align: center;
         }
         
         .screen.active {
@@ -121,11 +125,26 @@
         }
         
         .question {
-            font-size: 28px;
-            font-weight: 600;
+            font-size: 36px;
+            font-weight: 700;
             color: #333;
-            margin-bottom: 10px;
+            margin-bottom: 15px;
             text-align: center;
+            margin-top: 0;
+        }
+        
+        /* Ensure consistent headline positioning */
+        .screen > div {
+            padding-top: 0;
+        }
+        
+        .screen h1:first-child,
+        .screen h2:first-child,
+        .screen h3:first-child,
+        .screen .question:first-child {
+            margin-top: 0;
+            font-size: 36px;
+            font-weight: 700;
         }
         
         .question-emoji {
@@ -137,13 +156,13 @@
             font-size: 16px;
             color: #666;
             text-align: center;
-            margin-bottom: 30px;
+            margin-bottom: 15px;
         }
         
         .options {
             display: flex;
             flex-direction: column;
-            gap: 12px;
+            gap: 6px;
             max-width: 500px;
             margin: 0 auto;
         }
@@ -152,7 +171,7 @@
             background: white;
             border: 2px solid #ddd;
             border-radius: 8px;
-            padding: 18px;
+            padding: 9px;
             cursor: pointer;
             transition: all 0.2s ease;
             font-size: 16px;
@@ -163,10 +182,11 @@
         }
         
         .option:hover {
-            border-color: #4a5568;
-            background: #f0f0f0;
-            transform: translateY(-3px);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            border-color: #2d3748;
+            background: #e2e8f0;
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            border-width: 3px;
         }
         
         .option.selected {
@@ -191,7 +211,7 @@
         .options-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 15px;
+            gap: 7px;
             max-width: 600px;
             margin: 0 auto;
         }
@@ -200,7 +220,7 @@
             background: white;
             border: 2px solid #ddd;
             border-radius: 8px;
-            padding: 15px;
+            padding: 7px;
             cursor: pointer;
             transition: all 0.2s ease;
             text-align: center;
@@ -224,10 +244,11 @@
         }
         
         .option-visual:hover {
-            border-color: #4a5568;
-            transform: translateY(-4px);
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
-            background: #f8f8f8;
+            border-color: #2d3748;
+            transform: translateY(-6px) scale(1.03);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+            background: #e2e8f0;
+            border-width: 3px;
         }
         
         .option-visual.selected {
@@ -257,7 +278,7 @@
             font-weight: 600;
             cursor: pointer;
             transition: all 0.3s ease;
-            margin: 40px auto 0;
+            margin: 20px auto 0;
             display: block;
             min-width: 250px;
         }
@@ -277,6 +298,15 @@
             cursor: not-allowed;
         }
         
+        .btn-continue.has-selection {
+            background: #2d3748;
+        }
+        
+        .btn-continue.has-selection:hover {
+            background: #1a202c;
+            transform: translateY(-2px);
+        }
+        
         .btn-skip {
             background: transparent;
             color: #666;
@@ -286,24 +316,85 @@
             font-size: 14px;
         }
         
-        .spinner {
-            width: 60px;
-            height: 60px;
-            border: 4px solid #e2e8f0;
-            border-top: 4px solid #4a5568;
+        .circle-loader {
+            margin: 40px auto;
+            border: 3px solid rgba(0, 0, 0, 0.2);
+            border-left-color: #5cb85c;
+            animation: loader-spin 1.2s infinite linear;
+            position: relative;
+            display: inline-block;
+            vertical-align: top;
             border-radius: 50%;
-            animation: spin 1s linear infinite;
-            margin: 0 auto 30px;
+            width: 80px;
+            height: 80px;
         }
         
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
+        .load-complete {
+            -webkit-animation: none;
+            animation: none;
+            border-color: #5cb85c;
+            transition: border 500ms ease-out;
+        }
+        
+        .checkmark {
+            display: none;
+        }
+        
+        .checkmark.draw:after {
+            animation-duration: 800ms;
+            animation-timing-function: ease;
+            animation-name: checkmark;
+            transform: scaleX(-1) rotate(135deg);
+        }
+        
+        .checkmark:after {
+            opacity: 1;
+            height: 40px;
+            width: 20px;
+            transform-origin: left top;
+            border-right: 3px solid #5cb85c;
+            border-top: 3px solid #5cb85c;
+            content: '';
+            left: 16px;
+            top: 38px;
+            position: absolute;
+        }
+        
+        @keyframes loader-spin {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+        
+        @keyframes checkmark {
+            0% {
+                height: 0;
+                width: 0;
+                opacity: 1;
+            }
+            20% {
+                height: 0;
+                width: 20px;
+                opacity: 1;
+            }
+            40% {
+                height: 40px;
+                width: 20px;
+                opacity: 1;
+            }
+            100% {
+                height: 40px;
+                width: 20px;
+                opacity: 1;
+            }
         }
         
         .loading-container {
             text-align: center;
-            padding: 60px 20px;
+            padding: 0 20px 30px 20px;
         }
         
         .loading-text {
@@ -326,6 +417,7 @@
         .social-proof {
             text-align: center;
             padding: 20px;
+            padding-top: 0;
         }
         
         .stats {
@@ -457,8 +549,8 @@
         }
         
         .testimonial-stars {
-            width: 100px;
-            height: 55px;
+            width: 50px;
+            height: 27.5px;
             margin-bottom: 10px;
             object-fit: contain;
         }
@@ -578,6 +670,9 @@
 <body>
     <div class="quiz-container">
         <div class="quiz-header">
+            <div class="progress-bar-container">
+                <div class="progress-bar" id="quiz-progress-bar"></div>
+            </div>
             <div class="trust-badges">
                 <!-- <img src="assets/images/clinically-tested-badge.png" alt="Clinically Tested" class="trust-badge"> -->
                 <!-- <img src="assets/images/dermatologist-approved-badge.png" alt="Dermatologist Approved" class="trust-badge"> -->
@@ -591,360 +686,296 @@
             <div class="screen active" id="screen-1">
                 <div>
                     <h1 style="font-size: 36px; font-weight: 700; color: #333; text-align: center; margin-bottom: 30px; text-decoration: underline;">Take This 1-Minute Quiz To Claim Your Discount!</h1>
-                    <h2 class="question">How old are you?<span class="question-emoji">🤔</span></h2>
+                    <h2 class="question" style="font-size: 18px;">How do you currently get your daily energy boost? ⚡</h2>
                     <div class="options">
-                        <div class="option" onclick="selectOption(this, 'under-30')">Under 30</div>
-                        <div class="option" onclick="selectOption(this, '30-39')">30-39</div>
-                        <div class="option" onclick="selectOption(this, '40-49')">40-49</div>
-                        <div class="option" onclick="selectOption(this, '50-59')">50-59</div>
-                        <div class="option" onclick="selectOption(this, 'over-60')">Over 60</div>
+                        <div class="option" onclick="selectOption(this, 'loaded-tea')">Loaded Tea from nutrition shops</div>
+                        <div class="option" onclick="selectOption(this, 'coffee')">Coffee (multiple cups)</div>
+                        <div class="option" onclick="selectOption(this, 'energy-drinks')">Energy drinks (Monster, Red Bull, etc.)</div>
+                        <div class="option" onclick="selectOption(this, 'pre-workout')">Pre-workout supplements</div>
+                        <div class="option" onclick="selectOption(this, 'natural')">Natural options (green tea, matcha)</div>
+                        <div class="option" onclick="selectOption(this, 'low-energy')">I struggle with low energy</div>
                     </div>
-                    <button class="btn btn-skip" onclick="skipScreen()">SKIP THIS STEP</button>
                 </div>
             </div>
             
-            <!-- Screen 2: Skin Concerns -->
+            <!-- Screen 2: Frequency & Dependency -->
             <div class="screen" id="screen-2">
                 <div>
-                    <h2 class="question">What is your biggest skin-related concern? 💭</h2>
-                    <p class="subtext">(Choose as many as you like)</p>
+                    <h2 class="question">How often do you need an energy drink to get through your day?</h2>
+                    <p class="subtext">Be honest - we've all been there! 💯</p>
                     <div class="options">
-                        <div class="option" onclick="toggleMultiSelect(this, 'wrinkles')">Wrinkles</div>
-                        <div class="option" onclick="toggleMultiSelect(this, 'fine-lines')">Fine Lines</div>
-                        <div class="option" onclick="toggleMultiSelect(this, 'saggy-skin')">Saggy Skin</div>
-                        <div class="option" onclick="toggleMultiSelect(this, 'crepe-skin')">Crêpe Skin</div>
-                        <div class="option" onclick="toggleMultiSelect(this, 'dark-spots')">Dark Spots</div>
-                        <div class="option" onclick="toggleMultiSelect(this, 'patchy-skin')">Patchy Skin</div>
+                        <div class="option" onclick="selectOption(this, 'every-day')">Every single day (can't function without it)</div>
+                        <div class="option" onclick="selectOption(this, '5-6-week')">5-6 times per week</div>
+                        <div class="option" onclick="selectOption(this, '3-4-week')">3-4 times per week</div>
+                        <div class="option" onclick="selectOption(this, '1-2-week')">1-2 times per week</div>
+                        <div class="option" onclick="selectOption(this, 'when-tired')">Only when I'm really tired</div>
                     </div>
-                    <button class="btn btn-continue" onclick="nextScreen()">Continue →</button>
                 </div>
             </div>
             
-            <!-- Screen 3: Wrinkle Depth -->
+            <!-- Screen 3: Pain Points -->
             <div class="screen" id="screen-3">
                 <div>
-                    <h2 class="question">How deep are your wrinkles?</h2>
-                    <p class="subtext">(Choose as many as you like)</p>
-                    <!-- <img src="assets/images/wrinkle-depth-guide.png" alt="Wrinkle Depth Guide" class="scientific-diagram"> -->
+                    <h2 class="question">What bothers you most about your current energy drink?</h2>
+                    <p class="subtext">(Select all that apply)</p>
                     <div class="options">
-                        <div class="option" onclick="toggleMultiSelect(this, 'almost-not-visible')">Almost not visible</div>
-                        <div class="option" onclick="toggleMultiSelect(this, 'clearly-visible')">Clearly visible</div>
-                        <div class="option" onclick="toggleMultiSelect(this, 'deep-wrinkles')">Deep wrinkles</div>
+                        <div class="option" onclick="toggleMultiSelect(this, 'crash')">The afternoon crash hits HARD</div>
+                        <div class="option" onclick="toggleMultiSelect(this, 'jittery')">Jittery, anxious feelings</div>
+                        <div class="option" onclick="toggleMultiSelect(this, 'stomach')">Upset stomach or bloating</div>
+                        <div class="option" onclick="toggleMultiSelect(this, 'taste')">The artificial taste/aftertaste</div>
+                        <div class="option" onclick="toggleMultiSelect(this, 'guilty')">I feel guilty about the ingredients</div>
+                        <div class="option" onclick="toggleMultiSelect(this, 'health')">Worried about long-term health effects</div>
+                        <div class="option" onclick="toggleMultiSelect(this, 'nothing')">Nothing - I love it! (but I'm curious about healthier options)</div>
                     </div>
                     <button class="btn btn-continue" onclick="nextScreen()">CONTINUE →</button>
                 </div>
             </div>
             
-            <!-- Screen 4: Areas to Target -->
+            <!-- Screen 4: Ingredient Awareness -->
             <div class="screen" id="screen-4">
                 <div>
-                    <h2 class="question">Which of the following do you want to erase?</h2>
-                    <p class="subtext">(Choose all that apply)</p>
-                    <div class="options-grid">
-                        <div class="option-visual" onclick="toggleMultiSelect(this, 'mouth-wrinkles')">
-                            <!-- <img src="assets/images/mouth-wrinkles.jpg" alt="Mouth Wrinkles"> -->
-                            <div class="option-visual-label">Mouth Wrinkles</div>
-                        </div>
-                        <div class="option-visual" onclick="toggleMultiSelect(this, 'forehead-wrinkles')">
-                            <!-- <img src="assets/images/forehead-wrinkles.jpg" alt="Forehead Wrinkles"> -->
-                            <div class="option-visual-label">Forehead Wrinkles</div>
-                        </div>
-                        <div class="option-visual" onclick="toggleMultiSelect(this, 'eye-wrinkles')">
-                            <!-- <img src="assets/images/eye-wrinkles.jpg" alt="Eye Wrinkles"> -->
-                            <div class="option-visual-label">Eye Wrinkles or Crows Feet</div>
-                        </div>
-                        <div class="option-visual" onclick="toggleMultiSelect(this, 'turkey-neck')">
-                            <!-- <img src="assets/images/turkey-neck.jpg" alt="Turkey Neck"> -->
-                            <div class="option-visual-label">Turkey Neck</div>
-                        </div>
+                    <h2 class="question">Quick check: Do you know what these ingredients in your drink actually are? 🤔</h2>
+                    <div style="background: #f8f8f8; padding: 20px; border-radius: 8px; margin: 20px 0; text-align: center;">
+                        <p style="font-size: 18px; color: #333; margin: 10px 0;"><strong style="color: #e74c3c;">Red 40</strong>, <strong style="color: #3498db;">Blue 1</strong>, <strong style="color: #666;">Sucralose</strong>, <strong style="color: #666;">Acesulfame K</strong></p>
                     </div>
-                    <button class="btn btn-continue" onclick="nextScreen()">CONTINUE →</button>
+                    <div class="options">
+                        <div class="option" onclick="selectOption(this, 'yes-concerned')">Yes, and I'm concerned about them</div>
+                        <div class="option" onclick="selectOption(this, 'no-worried')">No idea, but now I'm worried</div>
+                        <div class="option" onclick="selectOption(this, 'try-not-think')">I try not to think about it</div>
+                        <div class="option" onclick="selectOption(this, 'find-cleaner')">I've been meaning to find a cleaner option</div>
+                    </div>
                 </div>
             </div>
             
-            <!-- Screen 5: Social Proof -->
+            <!-- Screen 5: Educational Screen -->
             <div class="screen" id="screen-5">
-                <div class="social-proof">
-                    <h2 class="question">You are in the right place!💪</h2>
-                    <div class="stats">
-                        Over <strong>100,000</strong> women have erased wrinkles from their <u>mouths, foreheads, eyes, and necks</u> thanks to the <strong>pristine Youth Renewal System!</strong>
+                <div>
+                    <h2 class="question">Did you know? Those ingredients are actually...</h2>
+                    <div style="background: #fff3cd; border: 1px solid #ffeaa7; padding: 20px; border-radius: 8px; margin: 20px 0;">
+                        <p style="font-size: 16px; color: #333; margin: 10px 0;"><strong style="color: #e74c3c;">Red 40 & Blue 1:</strong> Artificial dyes banned in Europe for causing hyperactivity</p>
+                        <p style="font-size: 16px; color: #333; margin: 10px 0;"><strong>Sucralose:</strong> Linked to gut health issues and bloating</p>
+                        <p style="font-size: 16px; color: #333; margin: 10px 0;"><strong>Acesulfame K:</strong> 200x sweeter than sugar with potential metabolic effects</p>
                     </div>
-                    <div class="before-after">
-                        <img src="assets/images/before-after-transformation.jpg" alt="Before and After Results">
-                    </div>
-                    <div class="testimonial-cards">
-                        <div class="testimonial-card">
-                            <img src="assets/images/5-star-rating.png" alt="5 Stars" class="testimonial-stars">
-                            <p>"I can't believe the difference in just 3 months!"</p>
-                            <small>- Sarah, 52</small>
-                        </div>
-                        <div class="testimonial-card">
-                            <img src="assets/images/5-star-rating.png" alt="5 Stars" class="testimonial-stars">
-                            <p>"My wrinkles have practically disappeared!"</p>
-                            <small>- Jennifer, 48</small>
+                    <div style="text-align: center; margin: 30px 0;">
+                        <p style="font-size: 18px; color: #333; margin-bottom: 20px;">Compare to Pristine Beauty's natural ingredients:</p>
+                        <div style="background: #d4edda; border: 1px solid #c3e6cb; padding: 20px; border-radius: 8px;">
+                            <p style="font-size: 16px; color: #155724;">✓ Natural caffeine from green tea</p>
+                            <p style="font-size: 16px; color: #155724;">✓ Real fruit flavors</p>
+                            <p style="font-size: 16px; color: #155724;">✓ Zero artificial dyes or sweeteners</p>
                         </div>
                     </div>
-                    <button class="btn btn-continue" onclick="nextScreen()">Continue →</button>
+                    <button class="btn btn-continue" onclick="nextScreen()">I want something cleaner →</button>
                 </div>
             </div>
             
-            <!-- Screen 6: Previous Products -->
+            <!-- Screen 6: Health Goals -->
             <div class="screen" id="screen-6">
                 <div>
-                    <h2 class="question">Which anti-aging products have you tried?</h2>
-                    <p class="subtext">(Choose all that apply)</p>
-                    <div class="ingredient-showcase">
-                        <div class="ingredient-item">
-                            <!-- <img src="assets/images/hyaluronic-acid-molecule.png" alt="Hyaluronic Acid"> -->
-                            <small>Hyaluronic Acid</small>
-                        </div>
-                        <div class="ingredient-item">
-                            <!-- <img src="assets/images/retinol-molecule.png" alt="Retinol"> -->
-                            <small>Retinol</small>
-                        </div>
-                        <div class="ingredient-item">
-                            <!-- <img src="assets/images/collagen-network.png" alt="Collagen"> -->
-                            <small>Collagen</small>
-                        </div>
-                    </div>
+                    <h2 class="question">What would you love to achieve with a healthier energy drink? ✨</h2>
+                    <p class="subtext">(Select your top 3)</p>
                     <div class="options">
-                        <div class="option" onclick="toggleMultiSelect(this, 'anti-aging-creams')">Anti-Aging Creams</div>
-                        <div class="option" onclick="toggleMultiSelect(this, 'retinol')">Retinol</div>
-                        <div class="option" onclick="toggleMultiSelect(this, 'hyaluronic-acid')">Hyaluronic Acid</div>
-                        <div class="option" onclick="toggleMultiSelect(this, 'collagen-powders')">Collagen Powders</div>
-                        <div class="option" onclick="toggleMultiSelect(this, 'supplements')">Supplements</div>
-                        <div class="option" onclick="toggleMultiSelect(this, 'other')">Other</div>
+                        <div class="option" onclick="toggleMultiSelect(this, 'sustained-energy')">Sustained energy without the crash</div>
+                        <div class="option" onclick="toggleMultiSelect(this, 'mental-clarity')">Better focus and mental clarity</div>
+                        <div class="option" onclick="toggleMultiSelect(this, 'weight-management')">Natural weight management support</div>
+                        <div class="option" onclick="toggleMultiSelect(this, 'clear-skin')">Clearer, glowing skin</div>
+                        <div class="option" onclick="toggleMultiSelect(this, 'less-bloating')">Less bloating and better digestion</div>
+                        <div class="option" onclick="toggleMultiSelect(this, 'feel-good')">Feel good about what I'm drinking</div>
+                        <div class="option" onclick="toggleMultiSelect(this, 'reduce-chemical')">Reduce my chemical intake</div>
                     </div>
                     <button class="btn btn-continue" onclick="nextScreen()">CONTINUE →</button>
                 </div>
             </div>
             
-            <!-- Screen 7: Educational/Pain Point -->
+            <!-- Screen 7: Beauty Interest Qualifier -->
             <div class="screen" id="screen-7">
-                <div class="loading-container">
-                    <h2 class="question">Don't worry if other solutions haven't worked for you...</h2>
-                    <img src="assets/images/skin-layer-diagram.png" alt="Skin Penetration Diagram" class="scientific-diagram">
-                    <p style="font-size: 18px; color: #333; margin: 20px 0;">
-                        99% of topical anti-aging solutions don't <u>penetrate the skin deeply enough</u> to have any real wrinkle-erasing effect...
-                    </p>
-                    <div class="spinner"></div>
-                    <p style="color: #666;">Loading next question...</p>
+                <div>
+                    <h2 class="question">How interested are you in beauty benefits from your daily drink? 💅</h2>
+                    <div class="options">
+                        <div class="option" onclick="selectOption(this, 'very-interested')">Very interested - tell me more!</div>
+                        <div class="option" onclick="selectOption(this, 'somewhat-interested')">Somewhat interested - nice bonus</div>
+                        <div class="option" onclick="selectOption(this, 'not-really')">Not really - I just want clean energy</div>
+                        <div class="option" onclick="selectOption(this, 'skeptical')">I'm skeptical beauty drinks actually work</div>
+                    </div>
                 </div>
             </div>
             
-            <!-- Screen 8: Treatments -->
+            <!-- Screen 8: Physical Symptoms -->
             <div class="screen" id="screen-8">
                 <div>
-                    <h2 class="question">Have you ever tried one of the following treatments? ✓</h2>
-                    <p class="subtext">(Choose all that apply)</p>
-                    <!-- <img src="assets/images/treatment-comparison.png" alt="Treatment Options" class="lifestyle-image"> -->
+                    <h2 class="question">Have you noticed any of these since drinking energy drinks? 🤔</h2>
+                    <p class="subtext">(Select all that apply)</p>
                     <div class="options">
-                        <div class="option" onclick="toggleMultiSelect(this, 'botox')">Botox</div>
-                        <div class="option" onclick="toggleMultiSelect(this, 'fillers')">Fillers</div>
-                        <div class="option" onclick="toggleMultiSelect(this, 'laser')">Laser Skin Resurfacing</div>
-                        <div class="option" onclick="toggleMultiSelect(this, 'microneedling')">Clinical Microneedling</div>
-                        <div class="option" onclick="toggleMultiSelect(this, 'chemical-peel')">Chemical Peel</div>
-                        <div class="option" onclick="toggleMultiSelect(this, 'hydrafacial')">Hydrafacial</div>
-                        <div class="option" onclick="toggleMultiSelect(this, 'other-treatment')">Other</div>
+                        <div class="option" onclick="toggleMultiSelect(this, 'crashes')">Afternoon energy crashes</div>
+                        <div class="option" onclick="toggleMultiSelect(this, 'sleep')">Trouble sleeping at night</div>
+                        <div class="option" onclick="toggleMultiSelect(this, 'anxiety')">Increased anxiety or stress</div>
+                        <div class="option" onclick="toggleMultiSelect(this, 'digestive')">Digestive issues or bloating</div>
+                        <div class="option" onclick="toggleMultiSelect(this, 'skin')">Skin breakouts or dullness</div>
+                        <div class="option" onclick="toggleMultiSelect(this, 'dependency')">Dependency (need it to function)</div>
+                        <div class="option" onclick="toggleMultiSelect(this, 'none')">None of these</div>
                     </div>
                     <button class="btn btn-continue" onclick="nextScreen()">CONTINUE →</button>
                 </div>
             </div>
             
-            <!-- Screen 9: Cost Pain Point -->
+            <!-- Screen 9: Taste Preferences -->
             <div class="screen" id="screen-9">
-                <div class="loading-container">
-                    <h2 class="question">These treatments are just way too expensive right?</h2>
-                    <img src="assets/images/cost-comparison-chart.png" alt="Treatment Cost Comparison" class="stats-infographic">
-                    <p style="font-size: 18px; color: #333; margin: 20px 0;">
-                        Yes, they deliver results, but the results only last a few months, and a single treatment costs between <strong>$400 and $800.</strong>
-                    </p>
-                    <p style="font-size: 18px; color: #333; margin: 20px 0;">
-                        For most women, this is simply too expensive in the long run.
-                    </p>
-                    <div class="spinner"></div>
-                    <p style="color: #666;">Loading next question...</p>
+                <div>
+                    <h2 class="question">What flavors make you excited to drink something every day? 🍓</h2>
+                    <p class="subtext">(Select all favorites)</p>
+                    <div class="options">
+                        <div class="option" onclick="toggleMultiSelect(this, 'fruity-tropical')">Fruity & tropical (like Bahama Mama)</div>
+                        <div class="option" onclick="toggleMultiSelect(this, 'sweet-fun')">Sweet & fun (like Gummy Bear)</div>
+                        <div class="option" onclick="toggleMultiSelect(this, 'berry')">Berry blends</div>
+                        <div class="option" onclick="toggleMultiSelect(this, 'citrus')">Citrus & refreshing</div>
+                        <div class="option" onclick="toggleMultiSelect(this, 'fruit-punch')">Classic fruit punch</div>
+                        <div class="option" onclick="toggleMultiSelect(this, 'try-anything')">I'll try anything that tastes good!</div>
+                    </div>
+                    <button class="btn btn-continue" onclick="nextScreen()">CONTINUE →</button>
                 </div>
             </div>
             
-            <!-- Screen 10: Goals -->
+            <!-- Screen 10: Lifestyle Fit -->
             <div class="screen" id="screen-10">
                 <div>
-                    <h2 class="question">What are your main goals? 🎯</h2>
-                    <p class="subtext">(Choose as many as you like)</p>
-                    <!-- <img src="assets/images/transformation-timeline.png" alt="Transformation Goals" class="lifestyle-image"> -->
+                    <h2 class="question">When do you need your energy boost the most? ⏰</h2>
+                    <p class="subtext">(Select all that apply)</p>
                     <div class="options">
-                        <div class="option" onclick="toggleMultiSelect(this, 'look-younger')">Look years younger</div>
-                        <div class="option" onclick="toggleMultiSelect(this, 'erase-wrinkles')">Erase wrinkles and fine lines</div>
-                        <div class="option" onclick="toggleMultiSelect(this, 'even-tone')">Even out skin tone</div>
-                        <div class="option" onclick="toggleMultiSelect(this, 'smoother-skin')">Smoother & firmer skin</div>
-                        <div class="option" onclick="toggleMultiSelect(this, 'natural-look')">A natural youthful look</div>
-                        <div class="option" onclick="toggleMultiSelect(this, 'all-above')">All of the above</div>
+                        <div class="option" onclick="toggleMultiSelect(this, 'morning')">Morning wake-up call</div>
+                        <div class="option" onclick="toggleMultiSelect(this, 'pre-workout')">Pre-workout fuel</div>
+                        <div class="option" onclick="toggleMultiSelect(this, 'afternoon')">Afternoon slump (2-3 PM)</div>
+                        <div class="option" onclick="toggleMultiSelect(this, 'evening')">Evening shift energy</div>
+                        <div class="option" onclick="toggleMultiSelect(this, 'weekend')">Weekend productivity</div>
+                        <div class="option" onclick="toggleMultiSelect(this, 'parent-mode')">Busy parent survival mode</div>
                     </div>
                     <button class="btn btn-continue" onclick="nextScreen()">CONTINUE →</button>
                 </div>
             </div>
             
-            <!-- Screen 11: Time Availability -->
+            <!-- Screen 11: Clean Ingredient Priority -->
             <div class="screen" id="screen-11">
                 <div>
-                    <h2 class="question">How much time do you have for daily skincare?⏰</h2>
-                    <!-- <img src="assets/images/clock-icon-5min.png" alt="5 Minutes" style="width: 80px; margin: 20px auto; display: block;"> -->
+                    <h2 class="question">How important is it that your energy drink has clean, natural ingredients? 🌿</h2>
                     <div class="options">
-                        <div class="option" onclick="selectOption(this, 'no-time')">I don't have time every day</div>
-                        <div class="option" onclick="selectOption(this, '5-minutes')">5 minutes</div>
-                        <div class="option" onclick="selectOption(this, '10-minutes')">10 minutes</div>
-                        <div class="option" onclick="selectOption(this, '15-minutes')">15 minutes</div>
-                        <div class="option" onclick="selectOption(this, '20-minutes')">20 minutes</div>
-                        <div class="option" onclick="selectOption(this, 'not-sure')">I am not sure</div>
+                        <div class="option" onclick="selectOption(this, 'extremely')">Extremely important - it's a dealbreaker</div>
+                        <div class="option" onclick="selectOption(this, 'very')">Very important - I actively seek clean options</div>
+                        <div class="option" onclick="selectOption(this, 'somewhat')">Somewhat important - nice to have</div>
+                        <div class="option" onclick="selectOption(this, 'not-that')">Not that important if it works</div>
+                        <div class="option" onclick="selectOption(this, 'never-thought')">I've never really thought about it</div>
                     </div>
                 </div>
             </div>
             
-            <!-- Screen 12: Educational about time -->
+            <!-- Screen 12: Social Proof Screen -->
             <div class="screen" id="screen-12">
-                <div class="loading-container">
-                    <h2 class="question">A busy schedule doesn't have to stop you from looking years younger...</h2>
-                    <img src="assets/images/woman-applying-serum.jpg" alt="Quick Application" class="lifestyle-image">
-                    <p style="font-size: 18px; color: #333; margin: 20px 0;">
-                        With our Youth Renewal System you can rejuvenate your skin from home <u>in just 5 minutes once every 2 weeks...</u>
-                    </p>
-                    <img src="assets/images/calendar-timeline.png" alt="2 Week Schedule" style="width: 200px; margin: 20px auto; display: block;">
-                    <div class="spinner"></div>
-                    <p style="color: #666;">Loading next question...</p>
+                <div>
+                    <h2 class="question">You're not alone! Over 50,000 women have made the switch</h2>
+                    <div class="testimonial-cards" style="margin: 30px 0;">
+                        <div class="testimonial-card">
+                            <img src="assets/images/5-star-rating.png" alt="5 Stars" class="testimonial-stars">
+                            <p>"I lost 8 lbs just by switching from loaded tea!"</p>
+                            <small>- Jessica, 32</small>
+                        </div>
+                        <div class="testimonial-card">
+                            <img src="assets/images/5-star-rating.png" alt="5 Stars" class="testimonial-stars">
+                            <p>"No more afternoon crashes or bloating"</p>
+                            <small>- Maria, 28</small>
+                        </div>
+                        <div class="testimonial-card">
+                            <img src="assets/images/5-star-rating.png" alt="5 Stars" class="testimonial-stars">
+                            <p>"It actually tastes BETTER than my old drink"</p>
+                            <small>- Ashley, 35</small>
+                        </div>
+                    </div>
+                    <div style="text-align: center; margin: 30px 0;">
+                        <p style="font-size: 18px; color: #333; margin-bottom: 20px;">Before/After Energy Levels:</p>
+                        <div style="background: #f8f9fa; padding: 20px; border-radius: 8px;">
+                            <p style="color: #e74c3c; margin: 10px 0;">Before: 📈 Energy spike → 📉 Crash</p>
+                            <p style="color: #27ae60; margin: 10px 0;">After: 📈 Sustained energy all day →</p>
+                        </div>
+                    </div>
+                    <button class="btn btn-continue" onclick="nextScreen()">Join the clean energy movement →</button>
                 </div>
             </div>
             
-            <!-- Screen 13: Skin Tone -->
+            <!-- Screen 13: Transformation Readiness -->
             <div class="screen" id="screen-13">
                 <div>
-                    <h2 class="question">What is your skin tone?</h2>
+                    <h2 class="question">How ready are you to upgrade your daily energy ritual? 💪</h2>
                     <div class="options">
-                        <div class="option skin-tone-option" onclick="selectOption(this, 'fair')">
-                            <div class="skin-tone-circle" style="background: #fde0d9;"></div>
-                            <span>Fair</span>
-                        </div>
-                        <div class="option skin-tone-option" onclick="selectOption(this, 'light')">
-                            <div class="skin-tone-circle" style="background: #f7c9b6;"></div>
-                            <span>Light</span>
-                        </div>
-                        <div class="option skin-tone-option" onclick="selectOption(this, 'medium')">
-                            <div class="skin-tone-circle" style="background: #d4a574;"></div>
-                            <span>Medium</span>
-                        </div>
-                        <div class="option skin-tone-option" onclick="selectOption(this, 'dark')">
-                            <div class="skin-tone-circle" style="background: #a67c52;"></div>
-                            <span>Dark</span>
-                        </div>
-                        <div class="option skin-tone-option" onclick="selectOption(this, 'very-dark')">
-                            <div class="skin-tone-circle" style="background: #754c3a;"></div>
-                            <span>Very Dark</span>
-                        </div>
-                        <div class="option" onclick="selectOption(this, 'not-sure-tone')">I am not sure</div>
+                        <div class="option" onclick="selectOption(this, 'ready-100')">I'm 100% ready for a healthier option</div>
+                        <div class="option" onclick="selectOption(this, 'interested-proof')">I'm interested but need to know it works</div>
+                        <div class="option" onclick="selectOption(this, 'try-alongside')">I want to try it alongside my current drink</div>
+                        <div class="option" onclick="selectOption(this, 'need-info')">I need more information first</div>
+                        <div class="option" onclick="selectOption(this, 'exploring')">I'm just exploring options</div>
                     </div>
                 </div>
             </div>
             
-            <!-- Screen 14: Sensitive Skin -->
+            <!-- Screen 14: Personalization -->
             <div class="screen" id="screen-14">
                 <div>
-                    <h2 class="question">Do you have sensitive skin?🤕</h2>
-                    <!-- <img src="assets/images/sensitive-skin-guide.png" alt="Sensitive Skin Guide" style="width: 250px; margin: 20px auto; display: block;"> -->
+                    <h2 class="question">One last thing - what describes you best?</h2>
                     <div class="options">
-                        <div class="option" onclick="selectOption(this, 'yes-sensitive')">Yes</div>
-                        <div class="option" onclick="selectOption(this, 'no-sensitive')">No</div>
-                        <div class="option" onclick="selectOption(this, 'not-sure-sensitive')">I am not sure</div>
+                        <div class="option" onclick="selectOption(this, 'professional')">Busy professional juggling it all</div>
+                        <div class="option" onclick="selectOption(this, 'mom')">Active mom who needs sustained energy</div>
+                        <div class="option" onclick="selectOption(this, 'fitness')">Fitness enthusiast seeking clean fuel</div>
+                        <div class="option" onclick="selectOption(this, 'student')">Student pulling long study sessions</div>
+                        <div class="option" onclick="selectOption(this, 'night-shift')">Night shift warrior</div>
+                        <div class="option" onclick="selectOption(this, 'feel-better')">Just someone who wants to feel better</div>
                     </div>
                 </div>
             </div>
             
-            <!-- Screen 15: Calculating Compatibility -->
+            <!-- Screen 15: Calculating Results -->
             <div class="screen" id="screen-15">
                 <div class="loading-container">
-                    <img src="assets/images/dna-helix-animation.gif" alt="Analyzing" class="dna-animation">
-                    <div class="spinner"></div>
-                    <p class="loading-text">Calculating skin type compatibility...</p>
+                    <div class="circle-loader">
+                        <div class="checkmark draw"></div>
+                    </div>
+                    <p class="loading-text">Analyzing your responses...</p>
+                    <p style="color: #666; margin-top: 10px;">Calculating your artificial ingredient exposure...</p>
+                    <p style="color: #666; margin-top: 10px;">Finding your perfect Pristine Beauty match...</p>
                 </div>
             </div>
             
-            <!-- Screen 16: Qualification -->
+            <!-- Screen 16: Results Screen -->
             <div class="screen" id="screen-16">
                 <div style="text-align: center;">
-                    <h2 class="question">Congratulations, you qualify!✅</h2>
-                    <!-- <img src="assets/images/checkmark-success.png" alt="Success" style="width: 80px; margin: 20px auto; display: block;"> -->
-                    <h3 style="font-size: 20px; color: #333; margin: 20px 0;">
-                        Our Youth Renewal System is 100% safe and pain-free for your particular skin type!
-                    </h3>
-                    <img src="assets/images/pristine-logo.png" alt="pristine" style="max-width: 120px; height: auto; margin: 20px 0; opacity: 0.8;">
-                    <button class="btn btn-continue" onclick="nextScreen()">Continue →</button>
-                    <div class="customer-avatars">
-                        <img src="assets/images/customer-avatar-1.jpg" alt="Happy Customer" class="avatar">
-                        <img src="assets/images/customer-avatar-2.jpg" alt="Happy Customer" class="avatar">
-                        <img src="assets/images/customer-avatar-3.jpg" alt="Happy Customer" class="avatar">
-                        <img src="assets/images/customer-avatar-4.jpg" alt="Happy Customer" class="avatar">
-                        <img src="assets/images/customer-avatar-5.jpg" alt="Happy Customer" class="avatar">
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Screen 17: Calculating Results -->
-            <div class="screen" id="screen-17">
-                <div class="loading-container">
-                    <img src="assets/images/skin-age-clock-reversal.gif" alt="Age Reversal" class="clock-reversal">
-                    <div class="spinner"></div>
-                    <p class="loading-text">Calculating possible results for your skin type...</p>
-                </div>
-            </div>
-            
-            <!-- Screen 18: Results -->
-            <div class="screen" id="screen-18">
-                <div style="text-align: center;">
-                    <h3 style="font-size: 18px; color: #666; margin-bottom: 10px;">Based on your answers we know:</h3>
-                    <h2 style="font-size: 24px; color: #333; margin-bottom: 30px;">
-                        You'll Erase All Your Wrinkles & Rejuvenate Your Skin <u>In Just 3 Months</u> with pristine.
-                    </h2>
-                    <p style="font-size: 16px; color: #333; margin-bottom: 10px;">
-                        Because you qualify, we guarantee <u>you'll achieve all your skin goals</u> with a 3-month supply of our youth renewal system.
-                    </p>
-                    <p class="guarantee">If not, you'll receive a full refund - no questions asked!</p>
-                    <img src="assets/images/money-back-guarantee.png" alt="Money Back Guarantee" class="guarantee-badge">
+                    <h2 class="question" style="font-size: 28px; color: #e74c3c; margin-bottom: 20px;">You're currently consuming [X] artificial ingredients daily that are banned in Europe!</h2>
+                    <h3 style="font-size: 22px; color: #27ae60; margin-bottom: 30px;">But your clean energy transformation starts today!</h3>
                     
-                    <div class="graph-container">
-                        <div class="progress-bars">
-                            <div class="bar bar-1"></div>
-                            <div class="bar bar-2"></div>
-                            <div class="bar bar-3"></div>
-                            <div class="bar bar-4"></div>
-                            <div class="bar bar-5">
-                                <div class="goal-marker">Goal</div>
-                            </div>
-                            <div class="bar bar-6"></div>
+                    <div style="display: flex; justify-content: space-around; margin: 30px 0;">
+                        <div style="background: #ffe5e5; padding: 20px; border-radius: 8px; width: 45%;">
+                            <h4 style="color: #e74c3c;">Your Current Drink</h4>
+                            <p style="font-size: 14px; margin: 10px 0;">❌ Red 40 & Blue 1</p>
+                            <p style="font-size: 14px; margin: 10px 0;">❌ Sucralose</p>
+                            <p style="font-size: 14px; margin: 10px 0;">❌ Acesulfame K</p>
+                            <p style="font-size: 14px; margin: 10px 0;">❌ Energy crashes</p>
                         </div>
-                        <div class="timeline">
-                            <span>July</span>
-                            <span>October</span>
+                        <div style="background: #e5ffe5; padding: 20px; border-radius: 8px; width: 45%;">
+                            <h4 style="color: #27ae60;">Your Pristine Upgrade</h4>
+                            <p style="font-size: 14px; margin: 10px 0;">✓ Natural caffeine</p>
+                            <p style="font-size: 14px; margin: 10px 0;">✓ Real fruit flavors</p>
+                            <p style="font-size: 14px; margin: 10px 0;">✓ Beauty benefits</p>
+                            <p style="font-size: 14px; margin: 10px 0;">✓ Sustained energy</p>
                         </div>
                     </div>
                     
-                    <img src="assets/images/results-statistics.png" alt="97% Success Rate" class="stats-infographic">
-                    
-                    <button class="btn btn-continue" style="background: #4a5568; margin-top: 30px;">
-                        CLAIM YOUR DISCOUNT ⤳
-                    </button>
-                    
-                    <img src="assets/images/woman-mirror-satisfied.jpg" alt="Satisfied Customer" class="lifestyle-image" style="margin-top: 30px;">
-                </div>
-            </div>
-            
-            <!-- Screen 19: Applying Discount -->
-            <div class="screen" id="screen-19">
-                <div class="loading-container">
-                    <img src="assets/images/email-gift-animation.gif" alt="Gift" class="email-gift-animation">
-                    <div style="width: 60px; height: 60px; margin: 0 auto 30px; background: #e5e7eb; border-radius: 50%; display: flex; align-items: center; justify-content: center;">
-                        <span style="font-size: 30px;">✓</span>
+                    <div style="background: #f8f9fa; padding: 20px; border-radius: 8px; margin: 20px 0;">
+                        <h4 style="margin-bottom: 15px;">Based on your quiz answers, Pristine Beauty is formulated to give you:</h4>
+                        <p style="font-size: 16px; margin: 8px 0;">✓ Sustained energy for your afternoon slump</p>
+                        <p style="font-size: 16px; margin: 8px 0;">✓ Your favorite flavors you'll actually crave</p>
+                        <p style="font-size: 16px; margin: 8px 0;">✓ Beauty benefits for clearer, glowing skin</p>
+                        <p style="font-size: 16px; margin: 8px 0;">✓ ZERO crashes, jitters, or bloating</p>
                     </div>
-                    <p class="loading-text">Applying special one-time discount...</p>
-                    <p style="color: #666; margin-top: 20px;">Preparing your personalized pristine routine...</p>
+                    
+                    <p style="font-size: 20px; color: #333; margin: 20px 0; font-weight: bold;">In just 14 days, you'll wonder why you ever settled for artificial energy</p>
+                    
+                    <p class="guarantee" style="margin: 20px 0;">100% Taste & Energy Guarantee - Love it or your money back</p>
+                    
+                    <button class="btn btn-continue" style="background: #27ae60; font-size: 20px; padding: 15px 40px; margin-top: 20px;">Start Your Clean Energy Transformation →</button>
+                    
+                    <p style="margin-top: 15px; color: #666;">Claim Your 14-Day Challenge Box (40% Off Today Only)</p>
                 </div>
             </div>
         </div>
@@ -961,19 +992,20 @@
     
     <script>
         let currentScreen = 1;
-        const totalScreens = 19;
+        const totalScreens = 16;
         const answers = {};
         const multiSelectAnswers = {};
         
         // Auto-progress screens that need timers
         const autoProgressScreens = {
-            7: 6000,  // Educational screen 1
-            9: 6000,  // Cost pain point
-            12: 6000, // Time educational
-            15: 6000, // Calculating compatibility
-            17: 6000, // Calculating results
-            19: 6000  // Applying discount
+            15: 6000  // Calculating results
         };
+        
+        function updateProgressBar() {
+            const progressBar = document.getElementById('quiz-progress-bar');
+            const progress = (currentScreen / totalScreens) * 100;
+            progressBar.style.width = progress + '%';
+        }
         
         function showScreen(screenIndex) {
             const screens = document.querySelectorAll('.screen');
@@ -983,14 +1015,35 @@
             if (targetScreen) {
                 targetScreen.classList.add('active');
                 currentScreen = screenIndex;
+                updateProgressBar();
                 
                 // Check if this screen should auto-progress
                 if (autoProgressScreens[screenIndex]) {
-                    setTimeout(() => {
-                        if (currentScreen === screenIndex) {
-                            nextScreen();
-                        }
-                    }, autoProgressScreens[screenIndex]);
+                    // For loading screens, show checkmark before transitioning
+                    const loader = targetScreen.querySelector('.circle-loader');
+                    if (loader) {
+                        // Show spinner for most of the duration
+                        setTimeout(() => {
+                            loader.classList.add('load-complete');
+                            const checkmark = loader.querySelector('.checkmark');
+                            if (checkmark) {
+                                checkmark.style.display = 'block';
+                            }
+                            // Wait for checkmark animation to complete
+                            setTimeout(() => {
+                                if (currentScreen === screenIndex) {
+                                    nextScreen();
+                                }
+                            }, 1000);
+                        }, autoProgressScreens[screenIndex] - 1000);
+                    } else {
+                        // No loader, proceed normally
+                        setTimeout(() => {
+                            if (currentScreen === screenIndex) {
+                                nextScreen();
+                            }
+                        }, autoProgressScreens[screenIndex]);
+                    }
                 }
             }
         }
@@ -1004,7 +1057,7 @@
             answers[screenId] = value;
             
             // Auto-advance after selection for certain screens
-            if ([1, 11, 13, 14].includes(currentScreen)) {
+            if ([1, 2, 4, 7, 11, 13, 14].includes(currentScreen)) {
                 setTimeout(() => nextScreen(), 300);
             }
         }
@@ -1022,6 +1075,23 @@
                 multiSelectAnswers[screenId].splice(index, 1);
             } else {
                 multiSelectAnswers[screenId].push(value);
+            }
+            
+            // Update button color if there are selections
+            updateContinueButton();
+        }
+        
+        function updateContinueButton() {
+            const currentScreenElement = document.querySelector('.screen.active');
+            const continueButton = currentScreenElement ? currentScreenElement.querySelector('.btn-continue') : null;
+            
+            if (continueButton) {
+                const hasSelection = currentScreenElement.querySelector('.option.selected') !== null;
+                if (hasSelection) {
+                    continueButton.classList.add('has-selection');
+                } else {
+                    continueButton.classList.remove('has-selection');
+                }
             }
         }
         
